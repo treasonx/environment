@@ -1,0 +1,15 @@
+#Debug Snippet
+snippet log
+	console.log('JRM DEBUG ========= File `Filename('', 'Untitled')` Line `line(".")`');
+	console.log('${1:string}');
+	console.log('=====================');
+
+snippet log_r
+	console.log('JRM DEBUG ========= File `Filename('', 'Untitled')` Line `line(".")`');
+	console.dir(${1:variable});
+	console.log('=====================');
+
+snippet define
+	define(['${1:module}'], function (${2:module}) {
+		${3:code}	
+	});
