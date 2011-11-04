@@ -1,0 +1,184 @@
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+ call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+"####### My Bundles #########
+
+"github
+Bundle 'kien/ctrlp.vim'
+Bundle 'fholgado/minibufexpl.vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'msanders/snipmate.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'vim-scripts/taglist.vim'
+Bundle 'vim-scripts/vcscommand.vim'
+Bundle 'vim-scripts/EasyMotion'
+Bundle 'vim-scripts/matchit.zip'
+Bundle 'nvie/vim-togglemouse'
+Bundle 'Raimondi/delimitMate'
+
+
+" Color Scheme stuffs
+set background=dark
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
+colorscheme solarized
+
+
+" Sets how many lines of history VIM has to remember
+set history=700
+
+" Enable filetype plugin
+filetype plugin on
+filetype indent on
+filetype on
+syntax enable
+set grepprg=grep\ -nH\ $*
+set autoindent
+set number
+set nohidden
+
+set cul                                           " highlight current line
+hi CursorLine term=none cterm=none ctermbg=3      " adjust color
+
+" Set to auto read when a file is changed from the outside
+set autoread
+" When vimrc is edited, reload it
+autocmd! bufwritepost vimrc source ~/.vimrc
+
+set ruler "Always show current position
+
+set cmdheight=2 "The commandbar height
+
+set ignorecase "Ignore case when searching
+
+set hlsearch "Highlight search things
+
+set incsearch "Make search act like search in modern browsers
+set nolazyredraw "Don't redraw while executing macros 
+
+set magic "Set magic on, for regular expressions
+
+set showmatch "Show matching bracets when text indicator is over them
+set mat=2 "How many tenths of a second to blink
+
+syntax enable "Enable syntax hl
+
+" Turn backup off, since most stuff is in SVN, git anyway...
+set nobackup
+set nowb
+set noswapfile
+
+"Tab Spacingo
+set softtabstop=2
+set shiftwidth=2
+set tabstop=2
+set expandtab
+
+set lbr
+set tw=500
+
+set ai "Auto indent
+set si "Smart indet
+set wrap "Wrap lines
+
+" Close the current buffer
+map <leader>bd :Bclose<cr>
+
+vnoremap $1 <esc>`>a)<esc>`<i(<esc>
+vnoremap $2 <esc>`>a]<esc>`<i[<esc>
+vnoremap $3 <esc>`>a}<esc>`<i{<esc>
+vnoremap $$ <esc>`>a"<esc>`<i"<esc>
+vnoremap $q <esc>`>a'<esc>`<i'<esc>
+vnoremap $e <esc>`>a"<esc>`<i"<esc>
+
+" Map auto complete of (, ", ', [
+inoremap $1 ()<esc>i
+inoremap $2 []<esc>i
+inoremap $3 {}<esc>i
+inoremap $4 {<esc>o}<esc>O
+inoremap $q ''<esc>i
+inoremap $e ""<esc>i
+inoremap $t <><esc>i
+
+""""""""""""""""""""""""""""""
+" => JavaScript section
+"""""""""""""""""""""""""""""""
+au FileType javascript setl fen
+au FileType javascript setl nocindent
+
+au FileType javascript imap <c-t> AJS.log();<esc>hi
+au FileType javascript imap <c-a> alert();<esc>hi
+
+au FileType javascript inoremap <buffer> $r return
+au FileType javascript inoremap <buffer> $f //--- PH ----------------------------------------------<esc>FP2xi
+
+function! JavaScriptFold()
+    setl foldmethod=syntax
+    setl foldlevelstart=1
+    syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+
+    function! FoldText()
+    return substitute(getline(v:foldstart), '{.*', '{...}', '')
+    endfunction
+    setl foldtext=FoldText()
+endfunction
+
+" Automatically cd into the directory that the file is in
+autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
+
+set showcmd
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
+
+
+let Tlist_Ctags_Cmd = "jsctags"
+let Tlist_WinWidth = 50
+map <F4> :TlistToggle<cr>
+
+" Remap SnipMate Kec-tab>'y
+let g:snips_trigger_key = '<C-tab>'
+
+
+"ctrlp stuff 
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_match_window_reversed = 1
+let g:ctrlp_working_path_mode = 0
+
+"Enable mouse support in xterm 
+set mouse=a
+set statusline=%f
+set statusline+=%y "filetype
+set statusline+=%c, "cursor column
+set statusline+=%l/%L "cursor line/total lines
+set statusline+=\ %P "percent through file
+set laststatus=2"
+
+
+highlight flicker cterm=bold ctermfg=white
+au CursorMoved <buffer> exe 'match flicker /\V\<'.escape(expand('<cword>'), '/').'\>/'
+
+
+"set file types
+au BufNewFile,BufRead *.phc set filetype=php
+au BufNewFile,BufRead *.tpl set filetype=html
+
+"mini buf stuff
+let g:miniBufExplCloseOnSelect = 0 
+
+"ezmotion
+let g:EasyMotion_leader_key = '<Leader>m'
