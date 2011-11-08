@@ -25,6 +25,7 @@ Bundle 'vim-scripts/matchit.zip'
 Bundle 'nvie/vim-togglemouse'
 Bundle 'Raimondi/delimitMate'
 Bundle 'vim-scripts/asciidoc.vim'
+Bundle 'ervandew/supertab'
 
 " Color Scheme stuffs
 set background=dark
