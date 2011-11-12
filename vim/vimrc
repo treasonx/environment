@@ -177,6 +177,7 @@ au CursorMoved <buffer> exe 'match flicker /\V\<'.escape(expand('<cword>'), '/')
 "set file types
 au BufNewFile,BufRead *.phc set filetype=php
 au BufNewFile,BufRead *.tpl set filetype=html
+au BufNewFile,BufRead *.asc set filetype=asciidoc
 
 "mini buf stuff
 let g:miniBufExplCloseOnSelect = 0 
