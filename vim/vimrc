@@ -27,7 +27,9 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'vim-scripts/asciidoc.vim'
 Bundle 'ervandew/supertab'
 Bundle 'vimoutliner/vimoutliner.git'
-
+"Vimscript
+"Bundle 'IndentAnything'
+"Bundle 'javascript.vim'
 " Color Scheme stuffs
 set background=dark
 let g:solarized_termtrans=1
@@ -179,3 +181,30 @@ let g:miniBufExplCloseOnSelect = 0
 
 "ezmotion
 let g:EasyMotion_leader_key = '<Leader>m'
+
+
+"Indent
+"" CSS (tab width 2 chr, wrap at 79th char)
+autocmd FileType css set sw=2
+autocmd FileType css set ts=2
+autocmd FileType css set sts=2
+autocmd FileType css set textwidth=79
+" JavaScript (tab width 2 chr, wrap at 79th)
+autocmd FileType javascript set sw=2
+autocmd FileType javascript set ts=2
+autocmd FileType javascript set sts=2
+autocmd FileType javascript set textwidth=79
+" HTML (tab width 2 chr, no wrapping)
+autocmd FileType html set sw=2
+autocmd FileType html set ts=2
+autocmd FileType html set sts=2
+autocmd FileType html set textwidth=0
+
+"Omnicomplete
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
+
+
