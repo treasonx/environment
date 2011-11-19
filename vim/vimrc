@@ -207,5 +207,5 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 "Keep current line centered
-set so=999
+"set so=999
 
