@@ -28,7 +28,7 @@ Bundle 'vim-scripts/asciidoc.vim'
 Bundle 'ervandew/supertab'
 Bundle 'vimoutliner/vimoutliner.git'
 "Vimscript
-"Bundle 'IndentAnything'
+Bundle 'JSON.vim'
 "Bundle 'javascript.vim'
 " Color Scheme stuffs
 set background=dark
@@ -176,6 +176,16 @@ au BufNewFile,BufRead *.phc set filetype=php
 au BufNewFile,BufRead *.tpl set filetype=html
 au BufNewFile,BufRead *.asc set filetype=asciidoc
 
+"JSON File Stuff
+au BufNewFile,BufRead *.json set filetype=json
+"Pretty Print JSON files using python simplejson
+":command PrettyJSON :'<,'>!python -m simplejson.tool
+function! PrettyJSON()
+  :%!python -m simplejson.tool
+  set filetype=json
+endfunction
+:command PrettyJSON :call PrettyJSON()
+
 "mini buf stuff
 let g:miniBufExplCloseOnSelect = 0 
 
@@ -208,4 +218,6 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 "Keep current line centered
 "set so=999
+"JSON File Stuff
+
 
