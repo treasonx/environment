@@ -188,6 +188,7 @@ au CursorMoved <buffer> exe 'match flicker /\V\<'.escape(expand('<cword>'), '/')
 "set file types
 au BufNewFile,BufRead *.phc set filetype=php
 au BufNewFile,BufRead *.tpl set filetype=html
+au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.asc set filetype=asciidoc
 
 "JSON File Stuff
@@ -198,7 +199,7 @@ function! PrettyJSON()
   :%!python -m simplejson.tool
   set filetype=json
 endfunction
-command PrettyJSON :call PrettyJSON()
+:command PrettyJSON :call PrettyJSON()
 
 "mini buf stuff
 let g:miniBufExplCloseOnSelect = 0 
@@ -234,7 +235,7 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 "set so=999
 
 "Nerd tree
-nnoremap <leader>d :NERDTreeToggle<cr>
+nnoremap <leader>n :NERDTreeToggle<cr>
 
 "Visual Search
 function! s:VSetSearch()
@@ -246,9 +247,6 @@ endfunction
 
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
 vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
-
-" Use a line-drawing char for pretty vertical splits.
-set fillchars+=vert:│
 
 
 "stupid stuff
@@ -358,7 +356,7 @@ function! NyanMe() " {{{
     echon "”   ‟"
     echohl None
 
-    sleep 1
+    sleep 5
     redraw
     echo " "
     echo " "
