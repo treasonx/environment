@@ -137,9 +137,6 @@ autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
 
 set showcmd
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 
@@ -159,11 +156,28 @@ let g:ctrlp_working_path_mode = 0
 
 "Enable mouse support in xterm 
 set mouse=a
-set statusline=%f
-set statusline+=%y "filetype
-set statusline+=%c, "cursor column
-set statusline+=%l/%L "cursor line/total lines
-set statusline+=\ %P "percent through file
+"Status Line Stuffs
+augroup ft_statuslinecolor
+  au!
+  au InsertEnter * hi StatusLine ctermfg=lightgreen guifg=lightgreen
+  au InsertLeave * hi StatusLine ctermfg=white guifg=white
+augroup END
+
+set statusline= 
+set statusline+=B[%3.3n 
+set statusline+=]\ %F\ 
+set statusline+=%{&fileformat}\ 
+set statusline+=%{strlen(&fenc)?&fenc:&enc}\ " encoding
+set statusline+=%y"filetype
+set statusline+=%#redbar# "highlight bar red on error or warnings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*                           " Reset highlighting.
+
+set statusline+=%= "align things below right
+
+set statusline+=%c,%l/%L\ %P\ "cursor column cursor line/total lines percent through file
+
 set laststatus=2"
 
 
@@ -184,7 +198,7 @@ function! PrettyJSON()
   :%!python -m simplejson.tool
   set filetype=json
 endfunction
-:command PrettyJSON :call PrettyJSON()
+command PrettyJSON :call PrettyJSON()
 
 "mini buf stuff
 let g:miniBufExplCloseOnSelect = 0 
@@ -218,6 +232,137 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 "Keep current line centered
 "set so=999
-"JSON File Stuff
+
+"Nerd tree
+nnoremap <leader>d :NERDTreeToggle<cr>
+
+"Visual Search
+function! s:VSetSearch()
+  let temp = @@
+  norm! gvy
+  let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
+  let @@ = temp
+endfunction
+
+vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
+vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
+
+" Use a line-drawing char for pretty vertical splits.
+set fillchars+=vert:│
 
 
+"stupid stuff
+function! NyanMe() " {{{
+    hi NyanFur             guifg=#BBBBBB
+    hi NyanPoptartEdge     guifg=#ffd0ac
+    hi NyanPoptartFrosting guifg=#fd3699 guibg=#fe98ff
+    hi NyanRainbow1        guifg=#6831f8
+    hi NyanRainbow2        guifg=#0099fc
+    hi NyanRainbow3        guifg=#3cfa04
+    hi NyanRainbow4        guifg=#fdfe00
+    hi NyanRainbow5        guifg=#fc9d00
+    hi NyanRainbow6        guifg=#fe0000
+
+
+    echohl NyanRainbow1
+    echon "≈"
+    echohl NyanRainbow2
+    echon "≋"
+    echohl NyanRainbow3
+    echon "≈"
+    echohl NyanRainbow4
+    echon "≋"
+    echohl NyanRainbow5
+    echon "≈"
+    echohl NyanRainbow6
+    echon "≋"
+    echohl NyanRainbow1
+    echon "≈"
+    echohl NyanRainbow2
+    echon "≋"
+    echohl NyanRainbow3
+    echon "≈"
+    echohl NyanRainbow4
+    echon "≋"
+    echohl NyanRainbow5
+    echon "≈"
+    echohl NyanRainbow6
+    echon "≋"
+    echohl None
+    echo ""
+
+    echohl NyanRainbow1
+    echon "≈"
+    echohl NyanRainbow2
+    echon "≋"
+    echohl NyanRainbow3
+    echon "≈"
+    echohl NyanRainbow4
+    echon "≋"
+    echohl NyanRainbow5
+    echon "≈"
+    echohl NyanRainbow6
+    echon "≋"
+    echohl NyanRainbow1
+    echon "≈"
+    echohl NyanRainbow2
+    echon "≋"
+    echohl NyanRainbow3
+    echon "≈"
+    echohl NyanRainbow4
+    echon "≋"
+    echohl NyanRainbow5
+    echon "≈"
+    echohl NyanRainbow6
+    echon "≋"
+    echohl NyanFur
+    echon "╰"
+    echohl NyanPoptartEdge
+    echon "⟨"
+    echohl NyanPoptartFrosting
+    echon "⣮⣯⡿"
+    echohl NyanPoptartEdge
+    echon "⟩"
+    echohl NyanFur
+    echon "⩾^ω^⩽"
+    echohl None
+    echo ""
+
+    echohl NyanRainbow1
+    echon "≈"
+    echohl NyanRainbow2
+    echon "≋"
+    echohl NyanRainbow3
+    echon "≈"
+    echohl NyanRainbow4
+    echon "≋"
+    echohl NyanRainbow5
+    echon "≈"
+    echohl NyanRainbow6
+    echon "≋"
+    echohl NyanRainbow1
+    echon "≈"
+    echohl NyanRainbow2
+    echon "≋"
+    echohl NyanRainbow3
+    echon "≈"
+    echohl NyanRainbow4
+    echon "≋"
+    echohl NyanRainbow5
+    echon "≈"
+    echohl NyanRainbow6
+    echon "≋"
+    echohl None
+    echon " "
+    echohl NyanFur
+    echon "”   ‟"
+    echohl None
+
+    sleep 1
+    redraw
+    echo " "
+    echo " "
+    echo "Noms?"
+    redraw
+endfunction " }}}
+command! NyanMe call NyanMe()
