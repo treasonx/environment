@@ -156,6 +156,7 @@ let g:ctrlp_working_path_mode = 0
 
 "Enable mouse support in xterm 
 set mouse=a
+set ttymouse=xterm2
 "Status Line Stuffs
 augroup ft_statuslinecolor
   au!
