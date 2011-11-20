@@ -205,7 +205,6 @@ endfunction
 let g:miniBufExplCloseOnSelect = 0 
 
 "ezmotion
-let g:EasyMotion_leader_key = '<Leader>m'
 
 
 "Indent
