@@ -364,3 +364,10 @@ function! NyanMe() " {{{
     redraw
 endfunction " }}}
 command! NyanMe call NyanMe()
+
+
+"VCS Commands
+nnoremap <leader>d :VCSDiff <cr>
+nnoremap <leader>c :VCSCommit <cr>
+
+
