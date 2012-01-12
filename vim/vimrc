@@ -27,6 +27,7 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'vim-scripts/asciidoc.vim'
 Bundle 'ervandew/supertab'
 Bundle 'vimoutliner/vimoutliner.git'
+Bundle 'Lokaltog/vim-powerline.git'
 "Vimscript
 Bundle 'JSON.vim'
 "Bundle 'javascript.vim'
@@ -164,22 +165,22 @@ augroup ft_statuslinecolor
   au InsertLeave * hi StatusLine ctermfg=white guifg=white
 augroup END
 
-set statusline= 
-set statusline+=B[%3.3n 
-set statusline+=]\ %F\ 
-set statusline+=%{&fileformat}\ 
-set statusline+=%{strlen(&fenc)?&fenc:&enc}\ " encoding
-set statusline+=%y"filetype
-set statusline+=%#redbar# "highlight bar red on error or warnings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*                           " Reset highlighting.
+"set statusline= 
+"set statusline+=B[%3.3n 
+"set statusline+=]\ %F\ 
+"set statusline+=%{&fileformat}\ 
+"set statusline+=%{strlen(&fenc)?&fenc:&enc}\ " encoding
+"set statusline+=%y"filetype
+"set statusline+=%#redbar# "highlight bar red on error or warnings
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*                           " Reset highlighting.
 
-set statusline+=%= "align things below right
+"set statusline+=%= "align things below right
 
-set statusline+=%c,%l/%L\ %P\ "cursor column cursor line/total lines percent through file
+"set statusline+=%c,%l/%L\ %P\ "cursor column cursor line/total lines percent through file
 
-set laststatus=2"
+set laststatus=2
 
 
 highlight flicker cterm=bold ctermfg=white
