@@ -1,3 +1,10 @@
+[user]
+  email = treasonx@gmail.com
+  name = James Morrin
+
+[github]
+  user = treasonx
+
 [difftool "Kaleidoscope"]
 	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
 [difftool]
@@ -34,6 +41,3 @@
 [push]
   # Only push branches that have been set up to track a remote branch.
   default = current
-[user]
-	name = James Morrin
-	email = treasonx@gmail.com
