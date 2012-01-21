@@ -28,6 +28,8 @@ Bundle 'vim-scripts/asciidoc.vim'
 Bundle 'ervandew/supertab'
 Bundle 'vimoutliner/vimoutliner.git'
 Bundle 'Lokaltog/vim-powerline.git'
+Bundle 'tpope/vim-cucumber'
+Bundle 'tpope/vim-rails'
 "Vimscript
 Bundle 'JSON.vim'
 "Bundle 'javascript.vim'
