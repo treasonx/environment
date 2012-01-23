@@ -2,8 +2,8 @@
 
 #Setup symbolic links
 echo 'Setting up symbolic links'
-ln -s ~/environment/bin ~/bin/
-ln -s ~/environment/vim ~/.vim/
+ln -s ~/environment/bin ~/bin
+ln -s ~/environment/vim ~/.vim
 ln -s ~/environment/vim/vimrc ~/.vimrc
 ln -s ~/environment/jshint/jshintrc ~/.jshintrc
 ln -s ~/environment/git/gitconfig ~/.gitconfig
