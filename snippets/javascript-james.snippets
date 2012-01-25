@@ -13,3 +13,37 @@ snippet define
 	define(['${1:module}'], function (${2:module}) {
 		${3:code}	
 	});
+
+snippet spec
+	define(['${1:module}'], function (${2:module}) {
+		describe('${3:specName}', function () {
+				
+			beforeEach(function () {
+				${4:setup}	
+			});
+
+			afterEach(function () {
+				${5:teardown}	
+			});
+
+			it('should be sane', function () {
+				expect(true).toBeTruthy();	
+			});
+
+			it('${6:expectation}', function () {
+				${8:test}	
+			});
+
+		});
+
+		return {
+			name: '${7:module}Spec'	
+		}
+	});
+
+snippet it
+	it('${1:expectation}', function () {
+		${2:test}		
+	});
+
+
