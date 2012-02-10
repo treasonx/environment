@@ -87,11 +87,14 @@ set nobackup
 set nowb
 set noswapfile
 
-"Tab Spacingo
-set softtabstop=2
-set shiftwidth=2
-set tabstop=2
-set expandtab
+if $WORK
+  set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+else
+  set softtabstop=2
+  set shiftwidth=2
+  set tabstop=2
+  set expandtab
+endif
 
 set lbr
 set tw=500
