@@ -6,11 +6,8 @@
   user = treasonx
 
 [difftool "Kaleidoscope"]
-	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
 [difftool]
-	prompt = false
 [diff]
-	tool = Kaleidoscope
 
 # Copy this file or single lines to ~/.gitconfig
 
@@ -41,3 +38,9 @@
 [push]
   # Only push branches that have been set up to track a remote branch.
   default = current
+[difftool "Kaleidoscope"]
+	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[diff]
+	tool = Kaleidoscope
