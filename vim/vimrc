@@ -11,6 +11,7 @@ Bundle 'gmarik/vundle'
 "####### My Bundles #########
 
 "github
+Bundle 'vim-scripts/L9'
 Bundle 'fholgado/minibufexpl.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
@@ -30,6 +31,9 @@ Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'vim-scripts/Gundo.git'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-rails'
+Bundle 'godlygeek/tabular'
+Bundle 'tpope/vim-surround'
+Bundle 'vim-scripts/FuzzyFinder'
 "Vimscript
 Bundle 'JSON.vim'
 "Bundle 'javascript.vim'
@@ -113,21 +117,21 @@ set wrap "Wrap lines
 " Close the current buffer
 map <leader>bd :Bclose<cr>
 
-vnoremap $1 <esc>`>a)<esc>`<i(<esc>
-vnoremap $2 <esc>`>a]<esc>`<i[<esc>
-vnoremap $3 <esc>`>a}<esc>`<i{<esc>
-vnoremap $$ <esc>`>a"<esc>`<i"<esc>
-vnoremap $q <esc>`>a'<esc>`<i'<esc>
-vnoremap $e <esc>`>a"<esc>`<i"<esc>
+"vnoremap $1 <esc>`>a)<esc>`<i(<esc>
+"vnoremap $2 <esc>`>a]<esc>`<i[<esc>
+"vnoremap $3 <esc>`>a}<esc>`<i{<esc>
+"vnoremap $$ <esc>`>a"<esc>`<i"<esc>
+"vnoremap $q <esc>`>a'<esc>`<i'<esc>
+"vnoremap $e <esc>`>a"<esc>`<i"<esc>
 
 " Map auto complete of (, ", ', [
-inoremap $1 ()<esc>i
-inoremap $2 []<esc>i
-inoremap $3 {}<esc>i
-inoremap $4 {<esc>o}<esc>O
-inoremap $q ''<esc>i
-inoremap $e ""<esc>i
-inoremap $t <><esc>i
+"inoremap $1 ()<esc>i
+"inoremap $2 []<esc>i
+"inoremap $3 {}<esc>i
+"inoremap $4 {<esc>o}<esc>O
+"inoremap $q ''<esc>i
+"inoremap $e ""<esc>i
+"inoremap $t <><esc>i
 
 """"""""""""""""""""""""""""""
 " => JavaScript section
@@ -261,5 +265,10 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 nnoremap <leader>d :VCSDiff <cr>
 nnoremap <leader>c :VCSCommit <cr>
 nnoremap <leader>q :bw <cr>
+
+"FuzzyFinder keys
+nnoremap <leader>fb :FufBuffer <cr>
+nnoremap <leader>ff :FufFile <cr>
+
 
 
