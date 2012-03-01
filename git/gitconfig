@@ -44,3 +44,6 @@
 	prompt = false
 [diff]
 	tool = Kaleidoscope
+[core]
+	quotepath = false
+	excludesfile = /Users/jmorrin/.gitignore
