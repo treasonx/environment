@@ -1,0 +1,49 @@
+tmux has-session -t work 
+if [ $? != 0 ]
+then
+#setup SPX-WEB
+	tmux new-session -s work -n spx-web -d
+	tmux send-keys -t work 'cd ~/projects/spx-web' C-m
+	tmux send-keys -t work 'vim' C-m
+	tmux send-keys -t work '\n' C-m
+	tmux split-window -v -p 10 -t work
+	tmux send-keys -t work:1.1 'cd ~/projects/spx-web' C-m
+	tmux split-window -h -p 30 -t work:1.1
+	tmux send-keys -t work:1.2 'cd ~/projects/spx-web' C-m
+	tmux send-keys -t work:1.2 'tail -f server.out' C-m
+
+#setup fuelrr
+	tmux new-window -n fuelrr -t work
+	tmux send-keys -t work:2 'cd ~/projects/fuelrr' C-m
+	tmux split-window -v -p 50 -t work:2
+	tmux send-keys -t work:2.1 'cd ~/projects/fuelrr' C-m
+
+#setup internal
+	tmux new-window -n internal -t work
+	tmux send-keys -t work:3 'cd ~/projects/internal' C-m
+	tmux split-window -v -p 50 -t work:3
+	tmux send-keys -t work:3.1 'cd ~/projects/internal' C-m
+
+#setup shared javascript
+	tmux new-window -n shared-javascript -t work
+	tmux send-keys -t work:4 'cd ~/projects/shared-javascript' C-m
+	tmux split-window -v -p 50 -t work:4
+	tmux send-keys -t work:4.1 'cd ~/projects/shared-javascript' C-m
+
+#setup notes
+	tmux new-window -n notes -t work
+	tmux send-keys -t work:5 'cd ~/Dropbox/Notes' C-m
+	tmux send-keys -t work:5 'cd ~/Dropbox/Notes' C-m
+	tmux send-keys -t work:5 'vim' C-m
+	tmux send-keys -t work:5 '\n' C-m
+	tmux split-window -v -p 20 -t work:5
+	tmux send-keys -t work:5.1 'cd ~/Dropbox/Notes' C-m
+
+	tmux select-window -t work:1
+
+	tmux attach -t work
+
+fi
+tmux attach -t work
+
+
