@@ -276,5 +276,5 @@ nnoremap <leader>q :bw <cr>
 nnoremap <leader>fb :FufBuffer <cr>
 nnoremap <leader>ff :FufFile <cr>
 
-
-
+"Better paste behavior
+set pastetoggle=<f10>
