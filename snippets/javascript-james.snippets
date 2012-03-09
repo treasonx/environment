@@ -46,4 +46,22 @@ snippet it
 		${2:test}		
 	});
 
+snippet iife
+	(function () {
+		${1:code}	
+	}());
+
+snippet biife
+	(function (window, undefined) {
+		${1:code}		
+	} (this));
+
+snippet siife
+	(function (window, SPX, $, undefined) {
+		${1:code}		
+	} (this, this.SPX, this.$));
+
+
+
+
 
