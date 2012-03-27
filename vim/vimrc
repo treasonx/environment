@@ -34,6 +34,7 @@ Bundle 'tpope/vim-rails'
 Bundle 'godlygeek/tabular'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/FuzzyFinder'
+Bundle 'Shougo/neocomplcache'
 "Vimscript
 Bundle 'JSON.vim'
 "Bundle 'javascript.vim'
