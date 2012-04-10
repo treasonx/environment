@@ -8,6 +8,8 @@ ln -s ~/environment/vim/vimrc ~/.vimrc
 ln -s ~/environment/jshint/jshintrc ~/.jshintrc
 ln -s ~/environment/git/gitconfig ~/.gitconfig
 ln -s ~/environment/tmux/tmux.conf ~/.tmux.conf
+ln -s ~/environment/grunt/ ~/.grunt
+ln -s ~/environment/package.json ~/package.json
 
 #Setup Vundler
 echo 'Setting up VIM environment'
