@@ -31,6 +31,10 @@ do
   ln -s $f $dest$snip
 done
 
+echo 'Setting up OSX preferences'
+cd ~/environment/
+./osxSetup.sh
+
 #Setup oh-my-zsh
 echo 'Installing oh-my-zsh'
 curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
