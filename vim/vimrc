@@ -13,28 +13,31 @@ Bundle 'gmarik/vundle'
 "github
 Bundle 'vim-scripts/L9'
 Bundle 'fholgado/minibufexpl.vim'
-Bundle 'scrooloose/nerdcommenter'
+"Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
-Bundle 'msanders/snipmate.vim'
+"Bundle 'msanders/snipmate.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/taglist.vim'
 Bundle 'vim-scripts/vcscommand.vim'
-Bundle 'vim-scripts/EasyMotion'
+"Bundle 'vim-scripts/EasyMotion'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'nvie/vim-togglemouse'
-Bundle 'Raimondi/delimitMate'
-Bundle 'vim-scripts/asciidoc.vim'
-Bundle 'ervandew/supertab'
-Bundle 'vimoutliner/vimoutliner.git'
+"Bundle 'Raimondi/delimitMate'
+"Bundle 'vim-scripts/asciidoc.vim'
+"Bundle 'ervandew/supertab'
+"Bundle 'vimoutliner/vimoutliner.git'
 Bundle 'Lokaltog/vim-powerline.git'
-Bundle 'vim-scripts/Gundo.git'
-Bundle 'tpope/vim-cucumber'
+"Bundle 'vim-scripts/Gundo.git'
+"Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-rails'
-Bundle 'godlygeek/tabular'
+"Bundle 'godlygeek/tabular'
 Bundle 'tpope/vim-surround'
-Bundle 'vim-scripts/FuzzyFinder'
+"Bundle 'vim-scripts/FuzzyFinder'
 Bundle 'Shougo/neocomplcache'
+Bundle 'jnwhiteh/vim-golang.git'
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neocomplcache-snippets-complete'
 "Vimscript
 Bundle 'JSON.vim'
 "Bundle 'javascript.vim'
@@ -103,8 +106,8 @@ if $WORK
   set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 else
   set softtabstop=2
-  set shiftwidth=2
-  set tabstop=2
+  set shiftwidth=4
+  set tabstop=4
   set expandtab
 endif
 
@@ -124,38 +127,12 @@ set wrap "Wrap lines
 " Close the current buffer
 map <leader>bd :Bclose<cr>
 
-"vnoremap $1 <esc>`>a)<esc>`<i(<esc>
-"vnoremap $2 <esc>`>a]<esc>`<i[<esc>
-"vnoremap $3 <esc>`>a}<esc>`<i{<esc>
-"vnoremap $$ <esc>`>a"<esc>`<i"<esc>
-"vnoremap $q <esc>`>a'<esc>`<i'<esc>
-"vnoremap $e <esc>`>a"<esc>`<i"<esc>
-
-" Map auto complete of (, ", ', [
-"inoremap $1 ()<esc>i
-"inoremap $2 []<esc>i
-"inoremap $3 {}<esc>i
-"inoremap $4 {<esc>o}<esc>O
-"inoremap $q ''<esc>i
-"inoremap $e ""<esc>i
-"inoremap $t <><esc>i
 
 """"""""""""""""""""""""""""""
 " => JavaScript section
 """""""""""""""""""""""""""""""
 au FileType javascript setl fen
 au FileType javascript setl nocindent
-
-function! JavaScriptFold()
-    setl foldmethod=syntax
-    setl foldlevelstart=1
-    syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
-
-    function! FoldText()
-    return substitute(getline(v:foldstart), '{.*', '{...}', '')
-    endfunction
-    setl foldtext=FoldText()
-endfunction
 
 " Automatically cd into the directory that the file is in
 autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
@@ -171,7 +148,7 @@ let Tlist_WinWidth = 50
 map <F4> :TlistToggle<cr>
 
 " Remap SnipMate Kec-tab>'y
-let g:snips_trigger_key = '<C-tab>'
+"let g:snips_trigger_key = '<C-tab>'
 
 "Enable mouse support in xterm 
 set mouse=a
@@ -183,23 +160,7 @@ augroup ft_statuslinecolor
   au InsertLeave * hi StatusLine ctermfg=white guifg=white
 augroup END
 
-"set statusline= 
-"set statusline+=B[%3.3n 
-"set statusline+=]\ %F\ 
-"set statusline+=%{&fileformat}\ 
-"set statusline+=%{strlen(&fenc)?&fenc:&enc}\ " encoding
-"set statusline+=%y"filetype
-"set statusline+=%#redbar# "highlight bar red on error or warnings
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*                           " Reset highlighting.
-
-"set statusline+=%= "align things below right
-
-"set statusline+=%c,%l/%L\ %P\ "cursor column cursor line/total lines percent through file
-
 set laststatus=2
-
 
 highlight flicker cterm=bold ctermfg=white
 au CursorMoved <buffer> exe 'match flicker /\V\<'.escape(expand('<cword>'), '/').'\>/'
@@ -245,13 +206,11 @@ autocmd FileType html set sts=2
 autocmd FileType html set textwidth=0
 
 "Omnicomplete
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-
-"Keep current line centered
-"set so=999
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 "Nerd tree
 nnoremap <leader>n :NERDTreeToggle<cr>
@@ -273,9 +232,29 @@ nnoremap <leader>d :VCSDiff <cr>
 nnoremap <leader>c :VCSCommit <cr>
 nnoremap <leader>q :bw <cr>
 
-"FuzzyFinder keys
-nnoremap <leader>fb :FufBuffer <cr>
-nnoremap <leader>ff :FufFile <cr>
-
 "Better paste behavior
 set pastetoggle=<f10>
+
+
+"GO LANG Support
+set rtp+=$GOROOT/misc/vim
+filetype plugin indent on
+syntax on
+
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+
+"snippet settings
+imap <C-k> <Plug>(neocomplcache_snippets_expand) 
+smap <C-k> <Plug>(neocomplcache_snippets_expand) 
+" For snippet_complete marker. 
+if has('conceal') 
+  set conceallevel=2 concealcursor=i 
+endif
+
+
+imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
+ \ "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+
+let g:neocomplcache_snippets_dir=$HOME."/environment/snippets"
