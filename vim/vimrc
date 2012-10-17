@@ -13,27 +13,16 @@ Bundle 'gmarik/vundle'
 "github
 Bundle 'vim-scripts/L9'
 Bundle 'fholgado/minibufexpl.vim'
-"Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
-"Bundle 'msanders/snipmate.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/taglist.vim'
 Bundle 'vim-scripts/vcscommand.vim'
-"Bundle 'vim-scripts/EasyMotion'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'nvie/vim-togglemouse'
-"Bundle 'Raimondi/delimitMate'
-"Bundle 'vim-scripts/asciidoc.vim'
-"Bundle 'ervandew/supertab'
-"Bundle 'vimoutliner/vimoutliner.git'
 Bundle 'Lokaltog/vim-powerline.git'
-"Bundle 'vim-scripts/Gundo.git'
-"Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-rails'
-"Bundle 'godlygeek/tabular'
 Bundle 'tpope/vim-surround'
-"Bundle 'vim-scripts/FuzzyFinder'
 Bundle 'Shougo/neocomplcache'
 Bundle 'jnwhiteh/vim-golang.git'
 Bundle 'Shougo/neocomplcache'
@@ -140,7 +129,11 @@ autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
 set showcmd
 
 let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
+let g:syntastic_error_symbol="✗"
+let g:syntastic_warning_symbol="⚠"
+let g:syntastic_enable_balloons = 1
+let g:syntastic_enable_highlighting = 1 
+"let g:syntastic_auto_loc_list=1
 
 
 let Tlist_Ctags_Cmd = "jsctags"
