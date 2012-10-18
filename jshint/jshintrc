@@ -2,12 +2,14 @@
     // Settings
     "passfail"      : false,  // Stop on first error.
     "maxerr"        : 100,    // Maximum errors before stopping.
+	"unused": true,
+	"unuseds": true,
 
 
     // Predefined globals whom JSHint will ignore.
     "browser"       : true,   // Standard browser globals e.g. `window`, `document`.
 
-    "node"          : false,
+    "node"          : true,
     "rhino"         : false,
     "couch"         : false,
     "wsh"           : true,   // Windows Scripting Host.
@@ -19,9 +21,7 @@
 
     "predef"        : [  // Extra globals.
         //"coolVar"
-
-			"Mazu",
-			"YAHOO"
+			"define"
     ],
 
 
