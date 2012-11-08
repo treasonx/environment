@@ -72,36 +72,22 @@ snippet doctype XHTML 1.1
 snippet docts
 	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
 	"http://www.w3.org/TR/html4/strict.dtd">
-# HTML Doctype 4.01 Transitional
-snippet doct
-	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-	"http://www.w3.org/TR/html4/loose.dtd">
 # HTML Doctype 5
 snippet doct5
 	<!DOCTYPE HTML>
 # XHTML Doctype 1.0 Frameset
-snippet docxf
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
-# XHTML Doctype 1.0 Strict
-snippet docxs
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-# XHTML Doctype 1.0 Transitional
-snippet docxt
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-# XHTML Doctype 1.1
-snippet docx
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 snippet html
+	<!DOCTYPE HTML>
 	<html>
-	${1}
-	</html>
-snippet xhtml
-	<html xmlns="http://www.w3.org/1999/xhtml">
-	${1}
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<title>${1}</title>
+		${2}
+	</head>
+        <body>
+            ${3}
+        </body>
 	</html>
 snippet body
 	<body>
@@ -109,7 +95,7 @@ snippet body
 	</body>
 snippet head
 	<head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8"`Close()`>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" >
 
 		<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>
 		${2}
@@ -117,37 +103,21 @@ snippet head
 snippet title
 	<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>${2}
 snippet script
-	<script type="text/javascript" charset="utf-8">
-		${1}
-	</script>${2}
+	<script type="text/javascript" charset="utf-8" src="${1}"></script>
 snippet scriptsrc
 	<script src="${1}.js" type="text/javascript" charset="utf-8"></script>${2}
 snippet style
 	<style type="text/css" media="${1:screen}">
 		${2}
-	</style>${3}
+	</style>
 snippet base
-	<base href="${1}" target="${2}"`Close()`>
+	<base href="${1}" target="${2}">
 snippet r
-	<br`Close()[1:]`>
+	<br>
 snippet div
-	<div id="${1:name}">
+	<div class="${1}">
 		${2}
 	</div>
-# Embed QT Movie
-snippet movie
-	<object width="$2" height="$3" classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B"
-	 codebase="http://www.apple.com/qtactivex/qtplugin.cab">
-		<param name="src" value="$1"`Close()`>
-		<param name="controller" value="$4"`Close()`>
-		<param name="autoplay" value="$5"`Close()`>
-		<embed src="${1:movie.mov}"
-			width="${2:320}" height="${3:240}"
-			controller="${4:true}" autoplay="${5:true}"
-			scale="tofit" cache="true"
-			pluginspage="http://www.apple.com/quicktime/download/"
-		`Close()[1:]`>
-	</object>${6}
 snippet fieldset
 	<fieldset id="$1">
 		<legend>${1:name}</legend>
@@ -159,20 +129,20 @@ snippet form
 		${3}
 
 
-	<p><input type="submit" value="Continue &rarr;"`Close()`></p>
+	<p><input type="submit" value="Continue &rarr;" ></p>
 	</form>
 snippet h1
 	<h1 id="${1:heading}">${2:$1}</h1>
 snippet input
-	<input type="${1:text/submit/hidden/button}" name="${2:some_name}" value="${3}"`Close()`>${4}
+	<input type="${1:text/submit/hidden/button}" name="${2:some_name}" value="${3}" >${4}
 snippet label
-	<label for="${2:$1}">${1:name}</label><input type="${3:text/submit/hidden/button}" name="${4:$2}" value="${5}" id="${6:$2}"`Close()`>${7}
+	<label for="${2:$1}">${1:name}</label><input type="${3:text/submit/hidden/button}" name="${4:$2}" value="${5}" id="${6:$2}" >${7}
 snippet link
-	<link rel="${1:stylesheet}" href="${2:/css/master.css}" type="text/css" media="${3:screen}" charset="utf-8"`Close()`>${4}
+	<link rel="${1:stylesheet}" href="${2:/css/master.css}" type="text/css" media="${3:screen}" charset="utf-8" >${4}
 snippet mailto
 	<a href="mailto:${1:joe@example.com}?subject=${2:feedback}">${3:email me}</a>
 snippet meta
-	<meta name="${1:name}" content="${2:content}"`Close()`>${3}
+	<meta name="${1:name}" content="${2:content}" >${3}
 snippet opt
 	<option value="${1:option}">${2:$1}</option>${3}
 snippet optt
