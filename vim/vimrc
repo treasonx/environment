@@ -118,8 +118,15 @@ map <leader>bd :Bclose<cr>
 """""""""""""""""""""""""""""""
 au FileType javascript setl fen
 au FileType javascript setl nocindent
-"remove trailing white spaces
-autocmd BufWritePre *.js :%s/\s\+$//e
+
+"Clean trailing whitespace on save
+fun! <SID>StripTrailingWhitespaces()
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
+endfun
+autocmd FileType c,cpp,java,php,ruby,python,javascript autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 " Automatically cd into the directory that the file is in
 autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
