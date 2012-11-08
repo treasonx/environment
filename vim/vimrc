@@ -220,7 +220,6 @@ set pastetoggle=<f10>
 set rtp+=$GOROOT/misc/vim
 filetype plugin indent on
 syntax on
-let g:neocomplcache_enable_cursor_hold_i = 1
 let g:neocomplcache_enable_at_startup = 1
 " Use smartcase.
 let g:neocomplcache_enable_smart_case = 1
@@ -234,8 +233,38 @@ if has('conceal')
   set conceallevel=2 concealcursor=i 
 endif
 
+let g:neocomplcache_auto_completion_start_length=4
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+"inoremap <expr><silent> <CR> <SID>my_cr_function()
+"function! s:my_cr_function()
+"return pumvisible() ? neocomplcache#close_popup() . "\<CR>" : "\<CR>"
+"endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
+
+" For cursor moving in insert mode(Not recommended)
+inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
+inoremap <expr><Right> neocomplcache#close_popup() . "\<Right>"
+" Or set this.
+"let g:neocomplcache_enable_cursor_hold_i = 1
+" Or set this.
+	
+" AutoComplPop like behavior.
+"let g:neocomplcache_enable_auto_select = 1
+
 
 imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
  \ "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 
 let g:neocomplcache_snippets_dir=$HOME."/environment/snippets"
+
+
+
