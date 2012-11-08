@@ -118,6 +118,8 @@ map <leader>bd :Bclose<cr>
 """""""""""""""""""""""""""""""
 au FileType javascript setl fen
 au FileType javascript setl nocindent
+"remove trailing white spaces
+autocmd BufWritePre *.js :%s/\s\+$//e
 
 " Automatically cd into the directory that the file is in
 autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
