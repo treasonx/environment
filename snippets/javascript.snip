@@ -14,6 +14,19 @@ snippet define
 		${3:code}	
 	});
 
+snippet extend 
+	define(['${1:module}'], function (${2:module}) {
+		
+        function ${3:constructor}() {
+            ${4:code}
+        }
+
+        return $2.extend({
+            constructor: $3    
+        });
+
+	});
+    
 snippet spec
 	define(['${1:module}'], function (${2:module}) {
 		describe('${3:specName}', function () {
