@@ -2,8 +2,10 @@
 
 # (c) holds no legal value ;)
 snippet c)
-	Copyright `&enc[:2] == "utf" ? "©" : "(c)"` `strftime("%Y")` ${1:`g:snips_author`}. All Rights Reserved.${2}
+	Copyright `&enc[:2] == "utf" ? "©" : "(c)"` `strftime("%Y")` ${1:who}. All Rights Reserved.
 snippet date
 	`strftime("%Y-%m-%d")`
 snippet ddate
 	`strftime("%B %d, %Y")`
+snippet todo
+    TODO JRM `strftime("%B %d, %Y")`
