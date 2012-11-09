@@ -15,6 +15,8 @@ Bundle 'vim-scripts/L9'
 Bundle 'fholgado/minibufexpl.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
+Bundle 'tsaleh/vim-matchit'
+Bundle 'vim-scripts/FuzzyFinder'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/vcscommand.vim'
 Bundle 'nvie/vim-togglemouse'
@@ -243,6 +245,7 @@ if has('conceal')
 endif
 
 let g:neocomplcache_auto_completion_start_length=4
+let g:neocomplcache_snippets_dir=$HOME."/environment/snippets"
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
@@ -273,7 +276,17 @@ inoremap <expr><Right> neocomplcache#close_popup() . "\<Right>"
 imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
  \ "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 
-let g:neocomplcache_snippets_dir=$HOME."/environment/snippets"
+"project specific vim file
+" Search up path for proj.vim file so we can wire in
+" " extra settings on a per project basis.
+"let proj_settings=findfile('proj.vim', '.;/')
+"if filereadable(proj_settings)
+"  source `=proj_settings`
+"endif
+
+set exrc            " enable per-directory .vimrc files
+set secure          " disable unsafe commands in local .vimrc files
 
 
-
+nnoremap <leader>b :FufBuffer<cr>
+nnoremap <leader>f :FufFile<cr>
