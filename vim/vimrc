@@ -16,10 +16,12 @@ Bundle 'fholgado/minibufexpl.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'tsaleh/vim-matchit'
-Bundle 'vim-scripts/FuzzyFinder'
+Bundle 'wincent/Command-T'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/vcscommand.vim'
 Bundle 'nvie/vim-togglemouse'
+Bundle 'xenoterracide/css.vim'
+Bundle 'Raimondi/delimitMate'
 Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'tpope/vim-rails'
 Bundle 'jnwhiteh/vim-golang.git'
@@ -287,6 +289,6 @@ imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
 set exrc            " enable per-directory .vimrc files
 set secure          " disable unsafe commands in local .vimrc files
 
+let g:CommandTMatchWindowAtTop = 1
 
-nnoremap <leader>b :FufBuffer<cr>
-nnoremap <leader>f :FufFile<cr>
+
