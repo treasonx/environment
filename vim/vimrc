@@ -1,46 +1,46 @@
-"""""""""""""""""""""""""""""""
-"  __   __ __   __    __   ______   ______    
-" /\ \ / //\ \ /\ "-./  \ /\  == \ /\  ___\   
-" \ \ \'/ \ \ \\ \ \-./\ \\ \  __< \ \ \____  
-"  \ \__|  \ \_\\ \_\ \ \_\\ \_\ \_\\ \_____\ 
-"   \/_/    \/_/ \/_/  \/_/ \/_/ /_/ \/_____/ 
-"
-"""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""
+"  __   __ __   __    __   ______   ______    "
+" /\ \ / //\ \ /\ "-./  \ /\  == \ /\  ___\   "
+" \ \ \'/ \ \ \\ \ \-./\ \\ \  __< \ \ \____  "
+"  \ \__|  \ \_\\ \_\ \ \_\\ \_\ \_\\ \_____\ " 
+"   \/_/    \/_/ \/_/  \/_/ \/_/ /_/ \/_____/ " 
+"                                             "  
+"""""""""""""""""""""""""""""""""""""""""""""""
                                             
 """""""""""""""""""""""""""""""
-"
-" => Basic Setup
-"
+"                             "   
+"        Basic Setup          "   
+"                             "    
 """""""""""""""""""""""""""""""
 
-set nocompatible               " be iMproved
-filetype off                   " required!
+set nocompatible               "be iMproved
+filetype off                   "required!
 set rtp+=~/.vim/bundle/vundle/ "Where are the bundles located"
 call vundle#rc()               "vundler setup
 
-"""""""""""""""""""""""""""""""
-"
-" => Plugins
-"
-"Bundle 'gmarik/vundle'                    "Plugin Manager
-"Bundle 'vim-scripts/L9'                   "VIMScript Programming Libraries
-"Bundle 'fholgado/minibufexpl.vim'         "List your buffers
-"Bundle 'scrooloose/nerdtree'              "File Manager
-"Bundle 'scrooloose/syntastic'             "Static Analysis
-"Bundle 'tsaleh/vim-matchit'               "Auto insert closing character
-"Bundle 'wincent/Command-T'                "Fuzzy File Finder
-"Bundle 'altercation/vim-colors-solarized' "Color Scheme
-"Bundle 'vim-scripts/vcscommand.vim'       "Source Control tools
-"Bundle 'tpope/vim-fugitive'               "GIT Specific tools
-"Bundle 'nvie/vim-togglemouse'             "Yes I still use the mouse
-"Bundle 'Raimondi/delimitMate'             "Go to the closing character / tag
-"Bundle 'Lokaltog/vim-powerline.git'       "Better Status Line
-"Bundle 'jnwhiteh/vim-golang.git'          "GO Lang support
-"Bundle 'Shougo/neocomplcache'             "Pretty Good Autocomplete
-"Bundle 'Shougo/neosnippet'                "Code snippets and expansion
-"Bundle 'JSON.vim'                         "JSON Code highlight     
-"
-"""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                                                             "
+" => Plugins                                                                  "
+"                                                                             "
+"Bundle 'gmarik/vundle'                    "Plugin Manager                    "  
+"Bundle 'vim-scripts/L9'                   "VIMScript Programming Libraries   "
+"Bundle 'fholgado/minibufexpl.vim'         "List your buffers                 "
+"Bundle 'scrooloose/nerdtree'              "File Manager                      "
+"Bundle 'scrooloose/syntastic'             "Static Analysis                   "
+"Bundle 'tsaleh/vim-matchit'               "Auto insert closing character     "
+"Bundle 'wincent/Command-T'                "Fuzzy File Finder                 "
+"Bundle 'altercation/vim-colors-solarized' "Color Scheme                      "
+"Bundle 'vim-scripts/vcscommand.vim'       "Source Control tools              "
+"Bundle 'tpope/vim-fugitive'               "GIT Specific tools                " 
+"Bundle 'nvie/vim-togglemouse'             "Yes I still use the mouse         "     
+"Bundle 'Raimondi/delimitMate'             "Go to the closing character / tag "
+"Bundle 'Lokaltog/vim-powerline.git'       "Better Status Line                "
+"Bundle 'jnwhiteh/vim-golang.git'          "GO Lang support                   " 
+"Bundle 'Shougo/neocomplcache'             "Pretty Good Autocomplete          "
+"Bundle 'Shougo/neosnippet'                "Code snippets and expansion       "
+"Bundle 'JSON.vim'                         "JSON Code highlight               "     
+"                                                                             "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Bundle 'gmarik/vundle'                          
 Bundle 'vim-scripts/L9'                         
@@ -61,9 +61,9 @@ Bundle 'Shougo/neosnippet'
 Bundle 'JSON.vim'
 
 """""""""""""""""""""""""""""""
-"
-" => Custom Functions
-"
+"                             "
+"      Custom Functions       "
+"                             "    
 """""""""""""""""""""""""""""""
 
 "Clean trailing whitespace on save
@@ -81,9 +81,9 @@ fun! PrettyJSON()
 endfun
 
 """""""""""""""""""""""""""""""
-"
-" => Appearance
-"
+"                             "
+"         Appearance          "
+"                             "     
 """""""""""""""""""""""""""""""
 
 " Color Scheme stuffs
@@ -109,9 +109,9 @@ set mat=2        "How many tenths of a second to blink
 syntax enable    "Enable syntax hl
 
 """""""""""""""""""""""""""""""
-"
-" => MISC VIM
-"
+"                             "
+"          MISC VIM           "
+"                             " 
 """""""""""""""""""""""""""""""
 
 set history=700                             "Sets how many lines of history VIM has to remember
@@ -121,9 +121,9 @@ set pastetoggle=<f10>                       "Better paste behavior
 autocmd! bufwritepost vimrc source ~/.vimrc "When vimrc is edited, reload it
 
 "Search Options
-set ignorecase                              "Ignore case when searching
-set incsearch                               "Make search act like search in modern browsers
-set magic                                   "Set magic on, for regular expressions
+set ignorecase "Ignore case when searching
+set incsearch  "Make search act like search in modern browsers
+set magic      "Set magic on, for regular expressions
 
 " Enable filetype plugin
 filetype plugin on
@@ -151,28 +151,19 @@ set secure "disable unsafe commands in local .vimrc files
 
 
 """""""""""""""""""""""""""""""
-"
-" => Spacing and Lines
-"
+"                             " 
+"     Spacing and Lines       "
+"                             "
 """""""""""""""""""""""""""""""
 
-set autoindent   "auto indent the next line"
+set autoindent "auto indent the next line
 
 " Tabs
 if $WORK
   set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 else
-  set softtabstop=2
-  set shiftwidth=4
-  set tabstop=4
-  set expandtab
+  set softtabstop=2 shiftwidth=4 tabstop=4 expandtab
 endif
-
-" soft tabbing at 2, 4 and 8 spaces of width "
-nnoremap <leader>2 <esc>:set expandtab tabstop=2 softtabstop=2 shiftwidth=2<cr>
-nnoremap <leader>4 <esc>:set expandtab tabstop=4 softtabstop=4 shiftwidth=4<cr>
-nnoremap <leader>8 <esc>:set expandtab tabstop=8 softtabstop=8 shiftwidth=8<cr>
-"  hard tabbing at 2, for and 8 spaces of width "
 
 " Line Wrapping
 set tw=500 "Max text width"
@@ -181,17 +172,25 @@ set si     "Smart indet
 set wrap   "Wrap lines
 
 """""""""""""""""""""""""""""""
-"
-" => Custom Key Mappings
-"
+"                             "
+"         Leader Key          "
+"                             "  
 """""""""""""""""""""""""""""""
 
-nnoremap <leader>q :bw <cr> "close buffer
+nnoremap <leader>q :bw <cr>            "close buffer
+nnoremap <leader>n :NERDTreeToggle<cr> "toggle nerdtree
+nnoremap <leader>d :VCSVimDiff <cr>    "Nice File Diff
+nnoremap <leader>c :VCSCommit <cr>     "Commit Changes
+nnoremap <leader>s :Gstatus <cr>       "GIT Status
+"Change Tab Spacing
+nnoremap <leader>2 <esc>:set expandtab tabstop=2 softtabstop=2 shiftwidth=2<cr>
+nnoremap <leader>4 <esc>:set expandtab tabstop=4 softtabstop=4 shiftwidth=4<cr>
+nnoremap <leader>8 <esc>:set expandtab tabstop=8 softtabstop=8 shiftwidth=8<cr>
 
 """""""""""""""""""""""""""""""
-"
-" => Language  Config section
-"
+"                             "
+"          Language           "
+"                             "
 """""""""""""""""""""""""""""""
 
 " => CSS
@@ -234,9 +233,9 @@ au BufNewFile,BufRead *.json set filetype=json
 set rtp+=$GOROOT/misc/vim
 
 """""""""""""""""""""""""""""""
-"
-" => Plugin Config
-"
+"                             "
+"       Plugin Config         "
+"                             "
 """""""""""""""""""""""""""""""
 
 " => scrooloose/syntastic
@@ -248,16 +247,6 @@ let g:syntastic_enable_highlighting = 1
 
 " => fholgado/minibufexpl.vim
 let g:miniBufExplCloseOnSelect = 0 
-
-" => scrooloose/nerdtree
-nnoremap <leader>n :NERDTreeToggle<cr>
-
-"vim-scripts/vcscommand.vim
-nnoremap <leader>d :VCSVimDiff <cr>
-nnoremap <leader>c :VCSCommit <cr>
-
-" => tpope/vim-fugitive
-nnoremap <leader>s :Gstatus <cr>
 
 " => Shougo/neocomplcache-snippets-complete
 imap <C-k> <Plug>(neocomplcache_snippets_expand) 
