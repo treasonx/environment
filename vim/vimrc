@@ -15,7 +15,7 @@
 
 set nocompatible               "be iMproved
 filetype off                   "required!
-set rtp+=~/.vim/bundle/vundle/ "Where are the bundles located"
+set rtp+=~/.vim/bundle/vundle/ "Where are the bundles located
 call vundle#rc()               "vundler setup
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -149,7 +149,6 @@ set ttymouse=xterm2
 set exrc   "enable per-directory .vimrc files
 set secure "disable unsafe commands in local .vimrc files
 
-
 """""""""""""""""""""""""""""""
 "                             " 
 "     Spacing and Lines       "
@@ -162,7 +161,7 @@ set autoindent "auto indent the next line
 if $WORK
   set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 else
-  set softtabstop=2 shiftwidth=4 tabstop=4 expandtab
+  set tabstop=4 softtabstop=2 shiftwidth=4 expandtab
 endif
 
 " Line Wrapping
@@ -278,10 +277,16 @@ imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
 
 " => wincent/Command-T
 let g:CommandTMatchWindowAtTop = 1
+set ttimeoutlen=50
+
+"get escape to work in the terminal for closing the command-t window
+if &term =~ "xterm" || &term =~ "screen"
+  let g:CommandTCancelMap     = ['<ESC>', '<C-c>']
+  let g:CommandTSelectNextMap = ['<C-n>', '<C-j>', '<ESC>OB']
+  let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<ESC>OA']
+endif
 
 " => Lokaltog/vim-powerline.git
 let g:Powerline_dividers_override = ['>>', '>', ]
-
-
 
 
