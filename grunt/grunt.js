@@ -2,8 +2,10 @@
  * Grunt tasks to automate daily tasks
  *
  */
+
 module.exports = function (grunt) {
   'use strict';
+
   grunt.initConfig({
     reload: {
       port: 35729, // LR default
@@ -47,7 +49,7 @@ module.exports = function (grunt) {
 
   //Watch notes and reload preview
   grunt.registerTask('previewNotes', 'When mardown notes change reload preview',
-    'markdown:notes server:notes reload watch:notes');
+    'markdown:notes server:notes watch:notes');
 
   grunt.registerTask('noop', 'do nothing', function() {
     console.log('NOPE!');
