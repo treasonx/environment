@@ -115,8 +115,10 @@ syntax enable    "Enable syntax hl
 """""""""""""""""""""""""""""""
 
 set history=700                             "Sets how many lines of history VIM has to remember
+set ttimeoutlen=50                          "Speed up O etc in the Terminal
 set autoread                                "Set to auto read when a file is changed from the outside
 set bs=2                                    "allow backspace
+set scrolloff=6                             "start scrolling 5 lines before edge of viewport
 set pastetoggle=<f10>                       "Better paste behavior
 autocmd! bufwritepost vimrc source ~/.vimrc "When vimrc is edited, reload it
 
@@ -176,15 +178,26 @@ set wrap   "Wrap lines
 "                             "  
 """""""""""""""""""""""""""""""
 
-nnoremap <leader>q :bw <cr>            "close buffer
-nnoremap <leader>n :NERDTreeToggle<cr> "toggle nerdtree
-nnoremap <leader>d :VCSVimDiff <cr>    "Nice File Diff
-nnoremap <leader>c :VCSCommit <cr>     "Commit Changes
-nnoremap <leader>s :Gstatus <cr>       "GIT Status
+nnoremap <leader>q :bw <cr>                    "close buffer
+nnoremap <leader>n :NERDTreeToggle<cr>         "toggle nerdtree
+nnoremap <leader>d :VCSVimDiff <cr>            "Nice File Diff
+nnoremap <leader>c :VCSCommit <cr>             "Commit Changes
+nnoremap <leader>s :Gstatus <cr>               "GIT Status
+nnoremap <leader>da :bufdo silent! bdelete<cr> "Delete all buffers
+
+
 "Change Tab Spacing
 nnoremap <leader>2 <esc>:set expandtab tabstop=2 softtabstop=2 shiftwidth=2<cr>
 nnoremap <leader>4 <esc>:set expandtab tabstop=4 softtabstop=4 shiftwidth=4<cr>
 nnoremap <leader>8 <esc>:set expandtab tabstop=8 softtabstop=8 shiftwidth=8<cr>
+
+"""""""""""""""""""""""""""""""
+"                             "
+"      Remap Commands         "
+"                             "  
+"""""""""""""""""""""""""""""""
+
+:command! W w "just write the file!
 
 """""""""""""""""""""""""""""""
 "                             "
@@ -198,6 +211,11 @@ autocmd FileType css set sw=2
 autocmd FileType css set ts=2
 autocmd FileType css set sts=2
 autocmd FileType css set textwidth=79
+"""""""""""""""""""""""""""""""
+"                             "
+"         Leader Key          "
+"                             "  
+"""""""""""""""""""""""""""""""
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 
 " => HTML
@@ -263,10 +281,6 @@ let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_auto_completion_start_length=4
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 " For cursor moving in insert mode(Not recommended)
 inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
@@ -277,7 +291,6 @@ imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
 
 " => wincent/Command-T
 let g:CommandTMatchWindowAtTop = 1
-set ttimeoutlen=50
 
 "get escape to work in the terminal for closing the command-t window
 if &term =~ "xterm" || &term =~ "screen"
@@ -287,6 +300,5 @@ if &term =~ "xterm" || &term =~ "screen"
 endif
 
 " => Lokaltog/vim-powerline.git
-let g:Powerline_dividers_override = ['>>', '>', ]
-
-
+let g:Powerline_symbols = 'unicode'
+let g:Powerline_stl_path_style = 'short'
