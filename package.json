@@ -1,14 +1,13 @@
 {
-  "name": "Node Packages used in local environment",
-  "Description": "The packages that I use most",
+  "name": "myPackages",
+  "description": "The packages that I use most",
   "version": "0.1.0",
   "author": {
     "name": "James Morrin",
     "email": "treasonx@gmail.com"
   },
   "dependencies": {
-    "jshint": "~0.6.0",
-    "express": "~2.5.9",
-    "grunt": "~0.3.8"
+    "jshint": "*",
+    "grunt": "*"
   }
 }
