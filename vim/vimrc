@@ -11,25 +11,40 @@ Bundle 'gmarik/vundle'
 "####### My Bundles #########
 
 "github
+"Programming library for VIM
 Bundle 'vim-scripts/L9'
+"See your open buffers in a top bar
 Bundle 'fholgado/minibufexpl.vim'
+"Nice file explorer 
 Bundle 'scrooloose/nerdtree'
+"Static analysis of code
 Bundle 'scrooloose/syntastic'
+"Go to the machhing "tag"
 Bundle 'tsaleh/vim-matchit'
+"Fuzzy file finder
 Bundle 'wincent/Command-T'
+"Best theme ever!
 Bundle 'altercation/vim-colors-solarized'
+"Source Control tools
 Bundle 'vim-scripts/vcscommand.vim'
+"Yes I still use the mouse!
 Bundle 'nvie/vim-togglemouse'
+"CSS highlighting
 Bundle 'xenoterracide/css.vim'
+"Auto add closing characters
 Bundle 'Raimondi/delimitMate'
+"Better status line
 Bundle 'Lokaltog/vim-powerline.git'
+"Rails related tools
 Bundle 'tpope/vim-rails'
+"Go lang support
 Bundle 'jnwhiteh/vim-golang.git'
+"Pretty good auto complete
 Bundle 'Shougo/neocomplcache'
+"Code Snippets and expansion
 Bundle 'Shougo/neocomplcache-snippets-complete'
-"Vimscript
-Bundle 'JSON.vim'
-"Bundle 'javascript.vim'
+
+
 " Color Scheme stuffs
 set background=dark
 let g:solarized_termtrans=1
