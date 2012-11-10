@@ -1,49 +1,90 @@
+"""""""""""""""""""""""""""""""
+"  __   __ __   __    __   ______   ______    
+" /\ \ / //\ \ /\ "-./  \ /\  == \ /\  ___\   
+" \ \ \'/ \ \ \\ \ \-./\ \\ \  __< \ \ \____  
+"  \ \__|  \ \_\\ \_\ \ \_\\ \_\ \_\\ \_____\ 
+"   \/_/    \/_/ \/_/  \/_/ \/_/ /_/ \/_____/ 
+"
+"""""""""""""""""""""""""""""""
+                                            
+"""""""""""""""""""""""""""""""
+"
+" => Basic Setup
+"
+"""""""""""""""""""""""""""""""
+
 set nocompatible               " be iMproved
 filetype off                   " required!
+set rtp+=~/.vim/bundle/vundle/ "Where are the bundles located"
+call vundle#rc()               "vundler setup
 
-set rtp+=~/.vim/bundle/vundle/
- call vundle#rc()
+"""""""""""""""""""""""""""""""
+"
+" => Plugins
+"
+"Bundle 'gmarik/vundle'                    "Plugin Manager
+"Bundle 'vim-scripts/L9'                   "VIMScript Programming Libraries
+"Bundle 'fholgado/minibufexpl.vim'         "List your buffers
+"Bundle 'scrooloose/nerdtree'              "File Manager
+"Bundle 'scrooloose/syntastic'             "Static Analysis
+"Bundle 'tsaleh/vim-matchit'               "Auto insert closing character
+"Bundle 'wincent/Command-T'                "Fuzzy File Finder
+"Bundle 'altercation/vim-colors-solarized' "Color Scheme
+"Bundle 'vim-scripts/vcscommand.vim'       "Source Control tools
+"Bundle 'tpope/vim-fugitive'               "GIT Specific tools
+"Bundle 'nvie/vim-togglemouse'             "Yes I still use the mouse
+"Bundle 'Raimondi/delimitMate'             "Go to the closing character / tag
+"Bundle 'Lokaltog/vim-powerline.git'       "Better Status Line
+"Bundle 'jnwhiteh/vim-golang.git'          "GO Lang support
+"Bundle 'Shougo/neocomplcache'             "Pretty Good Autocomplete
+"Bundle 'Shougo/neosnippet'                "Code snippets and expansion
+"Bundle 'JSON.vim'                         "JSON Code highlight     
+"
+"""""""""""""""""""""""""""""""
 
-" let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/vundle'                          
+Bundle 'vim-scripts/L9'                         
+Bundle 'fholgado/minibufexpl.vim'               
+Bundle 'scrooloose/nerdtree'                     
+Bundle 'scrooloose/syntastic'                   
+Bundle 'tsaleh/vim-matchit'                     
+Bundle 'wincent/Command-T'                      
+Bundle 'altercation/vim-colors-solarized'       
+Bundle 'vim-scripts/vcscommand.vim'             
+Bundle 'tpope/vim-fugitive'                     
+Bundle 'nvie/vim-togglemouse'                   
+Bundle 'Raimondi/delimitMate'                   
+Bundle 'Lokaltog/vim-powerline.git'             
+Bundle 'jnwhiteh/vim-golang.git'                
+Bundle 'Shougo/neocomplcache'                   
+Bundle 'Shougo/neosnippet' 
+Bundle 'JSON.vim'
 
-"####### My Bundles #########
+"""""""""""""""""""""""""""""""
+"
+" => Custom Functions
+"
+"""""""""""""""""""""""""""""""
 
-"github
-"Programming library for VIM
-Bundle 'vim-scripts/L9'
-"See your open buffers in a top bar
-Bundle 'fholgado/minibufexpl.vim'
-"Nice file explorer 
-Bundle 'scrooloose/nerdtree'
-"Static analysis of code
-Bundle 'scrooloose/syntastic'
-"Go to the machhing "tag"
-Bundle 'tsaleh/vim-matchit'
-"Fuzzy file finder
-Bundle 'wincent/Command-T'
-"Best theme ever!
-Bundle 'altercation/vim-colors-solarized'
-"Source Control tools
-Bundle 'vim-scripts/vcscommand.vim'
-"Yes I still use the mouse!
-Bundle 'nvie/vim-togglemouse'
-"CSS highlighting
-Bundle 'xenoterracide/css.vim'
-"Auto add closing characters
-Bundle 'Raimondi/delimitMate'
-"Better status line
-Bundle 'Lokaltog/vim-powerline.git'
-"Rails related tools
-Bundle 'tpope/vim-rails'
-"Go lang support
-Bundle 'jnwhiteh/vim-golang.git'
-"Pretty good auto complete
-Bundle 'Shougo/neocomplcache'
-"Code Snippets and expansion
-Bundle 'Shougo/neocomplcache-snippets-complete'
+"Clean trailing whitespace on save
+fun! <SID>StripTrailingWhitespaces()
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
+endfun
 
+"Format JSON
+fun! PrettyJSON()
+  :%!python -m simplejson.tool
+  set filetype=json
+endfun
+
+"""""""""""""""""""""""""""""""
+"
+" => Appearance
+"
+"""""""""""""""""""""""""""""""
 
 " Color Scheme stuffs
 set background=dark
@@ -53,47 +94,42 @@ let g:solarized_contrast="high"
 let g:solarized_visibility="high"
 colorscheme solarized
 
+hi CursorLine term=none cterm=none ctermbg=3 "adjust color
+set ruler        "Always show current position
+set cul          "highlight current line
+set hlsearch     "Highlight search things
+set cmdheight=2  "The commandbar height
+set number       "show line numbers"
+set nohidden     "dont unload my buffer"
+set nolazyredraw "Don't redraw while executing macros 
+set showmatch    "Show matching bracets when text indicator is over them
+set laststatus=2 "always have a status bar"
+set showcmd      "show information about the current command
+set mat=2        "How many tenths of a second to blink
+syntax enable    "Enable syntax hl
 
-" Sets how many lines of history VIM has to remember
-set history=700
+"""""""""""""""""""""""""""""""
+"
+" => MISC VIM
+"
+"""""""""""""""""""""""""""""""
+
+set history=700                             "Sets how many lines of history VIM has to remember
+set autoread                                "Set to auto read when a file is changed from the outside
+set bs=2                                    "allow backspace
+set pastetoggle=<f10>                       "Better paste behavior
+autocmd! bufwritepost vimrc source ~/.vimrc "When vimrc is edited, reload it
+
+"Search Options
+set ignorecase                              "Ignore case when searching
+set incsearch                               "Make search act like search in modern browsers
+set magic                                   "Set magic on, for regular expressions
 
 " Enable filetype plugin
 filetype plugin on
 filetype indent on
 filetype on
 syntax enable
-set grepprg=grep\ -nH\ $*
-set autoindent
-set number
-set nohidden
-
-set cul                                           " highlight current line
-hi CursorLine term=none cterm=none ctermbg=3      " adjust color
-
-" Set to auto read when a file is changed from the outside
-set autoread
-" When vimrc is edited, reload it
-autocmd! bufwritepost vimrc source ~/.vimrc
-
-set ruler "Always show current position
-
-set bs=2 "allow backspace
-
-set cmdheight=2 "The commandbar height
-
-set ignorecase "Ignore case when searching
-
-set hlsearch "Highlight search things
-
-set incsearch "Make search act like search in modern browsers
-set nolazyredraw "Don't redraw while executing macros 
-
-set magic "Set magic on, for regular expressions
-
-set showmatch "Show matching bracets when text indicator is over them
-set mat=2 "How many tenths of a second to blink
-
-syntax enable "Enable syntax hl
 
 " Turn backup off, since most stuff is in SVN, git anyway...
 set nobackup
@@ -105,7 +141,24 @@ set noerrorbells
 set vb 
 set t_vb="."
 
+"Enable mouse support in xterm 
+set mouse=a
+set ttymouse=xterm2
 
+"Load Project specific .vimrc 
+set exrc   "enable per-directory .vimrc files
+set secure "disable unsafe commands in local .vimrc files
+
+
+"""""""""""""""""""""""""""""""
+"
+" => Spacing and Lines
+"
+"""""""""""""""""""""""""""""""
+
+set autoindent   "auto indent the next line"
+
+" Tabs
 if $WORK
   set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 else
@@ -121,139 +174,92 @@ nnoremap <leader>4 <esc>:set expandtab tabstop=4 softtabstop=4 shiftwidth=4<cr>
 nnoremap <leader>8 <esc>:set expandtab tabstop=8 softtabstop=8 shiftwidth=8<cr>
 "  hard tabbing at 2, for and 8 spaces of width "
 
-set lbr
-set tw=500
+" Line Wrapping
+set tw=500 "Max text width"
+set ai     "Auto indent
+set si     "Smart indet
+set wrap   "Wrap lines
 
-set ai "Auto indent
-set si "Smart indet
-set wrap "Wrap lines
-
-" Close the current buffer
-map <leader>bd :Bclose<cr>
-
-
-""""""""""""""""""""""""""""""
-" => JavaScript section
 """""""""""""""""""""""""""""""
+"
+" => Custom Key Mappings
+"
+"""""""""""""""""""""""""""""""
+
+nnoremap <leader>q :bw <cr> "close buffer
+
+"""""""""""""""""""""""""""""""
+"
+" => Language  Config section
+"
+"""""""""""""""""""""""""""""""
+
+" => CSS
+" CSS (tab width 2 chr, wrap at 79th char)
+autocmd FileType css set sw=2
+autocmd FileType css set ts=2
+autocmd FileType css set sts=2
+autocmd FileType css set textwidth=79
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+
+" => HTML
+" HTML (tab width 2 chr, no wrapping)
+autocmd FileType html set sw=2
+autocmd FileType html set ts=2
+autocmd FileType html set sts=2
+autocmd FileType html set textwidth=0
+autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
+
+" => JavaScript
 au FileType javascript setl fen
 au FileType javascript setl nocindent
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
-"Clean trailing whitespace on save
-fun! <SID>StripTrailingWhitespaces()
-  let l = line(".")
-  let c = col(".")
-  %s/\s\+$//e
-  call cursor(l, c)
-endfun
-autocmd FileType c,cpp,java,php,ruby,python,javascript autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+" JavaScript (tab width 2 chr, wrap at 79th)
+autocmd FileType javascript set sw=2
+autocmd FileType javascript set ts=2
+autocmd FileType javascript set sts=2
+autocmd FileType javascript set textwidth=79
 
-" Automatically cd into the directory that the file is in
-autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
+" => Markdown
+au BufNewFile,BufRead *.md set filetype=markdown "set file types
+autocmd FileType markdown setlocal omnifunc=htmlcomplete#CompleteTags
 
-set showcmd
+" => JSON
+au BufNewFile,BufRead *.json set filetype=json
+:command! PrettyJSON :call PrettyJSON()
 
+" => GO Lang
+set rtp+=$GOROOT/misc/vim
+
+"""""""""""""""""""""""""""""""
+"
+" => Plugin Config
+"
+"""""""""""""""""""""""""""""""
+
+" => scrooloose/syntastic
 let g:syntastic_enable_signs=1
 let g:syntastic_error_symbol="✗"
 let g:syntastic_warning_symbol="⚠"
 let g:syntastic_enable_balloons = 1
 let g:syntastic_enable_highlighting = 1 
 
-"Enable mouse support in xterm 
-set mouse=a
-set ttymouse=xterm2
-"Status Line Stuffs
-augroup ft_statuslinecolor
-  au!
-  au InsertEnter * hi StatusLine ctermfg=lightgreen guifg=lightgreen
-  au InsertLeave * hi StatusLine ctermfg=white guifg=white
-augroup END
-
-set laststatus=2
-
-highlight flicker cterm=bold ctermfg=white
-au CursorMoved <buffer> exe 'match flicker /\V\<'.escape(expand('<cword>'), '/').'\>/'
-
-
-"set file types
-au BufNewFile,BufRead *.phc set filetype=php
-au BufNewFile,BufRead *.tpl set filetype=html
-au BufNewFile,BufRead *.md set filetype=markdown
-au BufNewFile,BufRead *.asc set filetype=asciidoc
-
-"JSON File Stuff
-au BufNewFile,BufRead *.json set filetype=json
-"Pretty Print JSON files using python simplejson
-":command PrettyJSON :'<,'>!python -m simplejson.tool
-function! PrettyJSON()
-  :%!python -m simplejson.tool
-  set filetype=json
-endfunction
-:command PrettyJSON :call PrettyJSON()
-
-"mini buf stuff
+" => fholgado/minibufexpl.vim
 let g:miniBufExplCloseOnSelect = 0 
 
-"ezmotion
-
-
-"Indent
-"" CSS (tab width 2 chr, wrap at 79th char)
-autocmd FileType css set sw=2
-autocmd FileType css set ts=2
-autocmd FileType css set sts=2
-autocmd FileType css set textwidth=79
-" JavaScript (tab width 2 chr, wrap at 79th)
-autocmd FileType javascript set sw=2
-autocmd FileType javascript set ts=2
-autocmd FileType javascript set sts=2
-autocmd FileType javascript set textwidth=79
-" HTML (tab width 2 chr, no wrapping)
-autocmd FileType html set sw=2
-autocmd FileType html set ts=2
-autocmd FileType html set sts=2
-autocmd FileType html set textwidth=0
-
-"Omnicomplete
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-"Nerd tree
+" => scrooloose/nerdtree
 nnoremap <leader>n :NERDTreeToggle<cr>
 
-"Visual Search
-function! s:VSetSearch()
-  let temp = @@
-  norm! gvy
-  let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
-  let @@ = temp
-endfunction
-
-vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
-vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
-
-
-"VCS Commands
-nnoremap <leader>d :VCSDiff <cr>
+"vim-scripts/vcscommand.vim
+nnoremap <leader>d :VCSVimDiff <cr>
 nnoremap <leader>c :VCSCommit <cr>
-nnoremap <leader>q :bw <cr>
 
-"Better paste behavior
-set pastetoggle=<f10>
+" => tpope/vim-fugitive
+nnoremap <leader>s :Gstatus <cr>
 
-
-"GO LANG Support
-set rtp+=$GOROOT/misc/vim
-filetype plugin indent on
-syntax on
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-
-
-"snippet settings
+" => Shougo/neocomplcache-snippets-complete
 imap <C-k> <Plug>(neocomplcache_snippets_expand) 
 smap <C-k> <Plug>(neocomplcache_snippets_expand) 
 " For snippet_complete marker. 
@@ -261,16 +267,12 @@ if has('conceal')
   set conceallevel=2 concealcursor=i 
 endif
 
-let g:neocomplcache_auto_completion_start_length=4
 let g:neocomplcache_snippets_dir=$HOME."/environment/snippets"
 
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-"inoremap <expr><silent> <CR> <SID>my_cr_function()
-"function! s:my_cr_function()
-"return pumvisible() ? neocomplcache#close_popup() . "\<CR>" : "\<CR>"
-"endfunction
-" <TAB>: completion.
+" => Shougo/neocomplcache
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_auto_completion_start_length=4
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
@@ -278,32 +280,19 @@ inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
-
 " For cursor moving in insert mode(Not recommended)
 inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
 inoremap <expr><Right> neocomplcache#close_popup() . "\<Right>"
-" Or set this.
-"let g:neocomplcache_enable_cursor_hold_i = 1
-" Or set this.
-	
-" AutoComplPop like behavior.
-"let g:neocomplcache_enable_auto_select = 1
-
 
 imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
  \ "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 
-"project specific vim file
-" Search up path for proj.vim file so we can wire in
-" " extra settings on a per project basis.
-"let proj_settings=findfile('proj.vim', '.;/')
-"if filereadable(proj_settings)
-"  source `=proj_settings`
-"endif
-
-set exrc            " enable per-directory .vimrc files
-set secure          " disable unsafe commands in local .vimrc files
-
+" => wincent/Command-T
 let g:CommandTMatchWindowAtTop = 1
+
+" => Lokaltog/vim-powerline.git
+let g:Powerline_dividers_override = ['>>', '>', ]
+
+
 
 
