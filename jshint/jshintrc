@@ -48,7 +48,6 @@
   "maxparams"     : 4,       // Gets nasty after 4
   "maxdepth"      : 4,       // Please refactor to something a bit easier to follow
   "maxcomplexity" : 10,      // Keep it simple
-  "maxlen"        : 80,      // Old School! :)
-  "white"         : true     // Check against strict whitespace and indentation rules.
+  "maxlen"        : 80      // Old School! :)
 }
 
