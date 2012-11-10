@@ -9,6 +9,8 @@
   "dependencies": {
     "jshint": "*",
     "grunt": "*",
-    "grunt-markdown": "*"
+    "grunt-markdown": "*",
+    "http-server": "*",
+    "grunt-reload": "*"
   }
 }
