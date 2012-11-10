@@ -19,6 +19,7 @@ Bundle 'tsaleh/vim-matchit'
 Bundle 'wincent/Command-T'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/vcscommand.vim'
+Bundle 'tpope/vim-fugitive'
 Bundle 'nvie/vim-togglemouse'
 Bundle 'xenoterracide/css.vim'
 Bundle 'Raimondi/delimitMate'
@@ -133,7 +134,7 @@ endfun
 autocmd FileType c,cpp,java,php,ruby,python,javascript autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 " Automatically cd into the directory that the file is in
-autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
+"autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
 
 set showcmd
 
@@ -221,8 +222,9 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 
 
 "VCS Commands
-nnoremap <leader>d :VCSDiff <cr>
+nnoremap <leader>d :VCSVimDiff <cr>
 nnoremap <leader>c :VCSCommit <cr>
+nnoremap <leader>s :Gstatus <cr>
 nnoremap <leader>q :bw <cr>
 
 "Better paste behavior
@@ -291,4 +293,4 @@ set secure          " disable unsafe commands in local .vimrc files
 
 let g:CommandTMatchWindowAtTop = 1
 
-
+let g:Powerline_dividers_override = ['>>', '>', ]
