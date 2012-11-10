@@ -264,6 +264,7 @@ let g:syntastic_enable_highlighting = 1
 
 " => fholgado/minibufexpl.vim
 let g:miniBufExplCloseOnSelect = 0 
+let g:miniBufExplModSelTarget = 1
 
 " => Shougo/neocomplcache-snippets-complete
 imap <C-k> <Plug>(neocomplcache_snippets_expand) 
@@ -285,6 +286,8 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " For cursor moving in insert mode(Not recommended)
 inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
 inoremap <expr><Right> neocomplcache#close_popup() . "\<Right>"
+inoremap <expr><Up>  neocomplcache#close_popup() . "\<Up>"
+inoremap <expr><Down> neocomplcache#close_popup() . "\<Down>"
 
 imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
  \ "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -302,3 +305,5 @@ endif
 " => Lokaltog/vim-powerline.git
 let g:Powerline_symbols = 'unicode'
 let g:Powerline_stl_path_style = 'short'
+
+
