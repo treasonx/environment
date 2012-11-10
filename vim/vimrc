@@ -4,6 +4,9 @@
 " \ \ \'/ \ \ \\ \ \-./\ \\ \  __< \ \ \____  "
 "  \ \__|  \ \_\\ \_\ \ \_\\ \_\ \_\\ \_____\ " 
 "   \/_/    \/_/ \/_/  \/_/ \/_/ /_/ \/_____/ " 
+"                                             "
+"               James Morrin                  "
+"                @treasonx                    " 
 "                                             "  
 """""""""""""""""""""""""""""""""""""""""""""""
                                             
@@ -86,7 +89,7 @@ endfun
 "                             "     
 """""""""""""""""""""""""""""""
 
-" Color Scheme stuffs
+"Color Scheme stuffs
 set background=dark
 let g:solarized_termtrans=1
 let g:solarized_termcolors=256
@@ -94,18 +97,16 @@ let g:solarized_contrast="high"
 let g:solarized_visibility="high"
 colorscheme solarized
 
-hi CursorLine term=none cterm=none ctermbg=3 "adjust color
 set ruler        "Always show current position
 set cul          "highlight current line
-set hlsearch     "Highlight search things
+set hlsearch     "highlight search
 set cmdheight=2  "The commandbar height
-set number       "show line numbers"
-set nohidden     "dont unload my buffer"
+set number       "show line numbers
+set nohidden     "dont unload my buffer
 set nolazyredraw "Don't redraw while executing macros 
 set showmatch    "Show matching bracets when text indicator is over them
-set laststatus=2 "always have a status bar"
+set laststatus=2 "always have a status bar
 set showcmd      "show information about the current command
-set mat=2        "How many tenths of a second to blink
 syntax enable    "Enable syntax hl
 
 """""""""""""""""""""""""""""""
@@ -127,18 +128,18 @@ set ignorecase "Ignore case when searching
 set incsearch  "Make search act like search in modern browsers
 set magic      "Set magic on, for regular expressions
 
-" Enable filetype plugin
+"Enable filetype plugin
 filetype plugin on
 filetype indent on
 filetype on
 syntax enable
 
-" Turn backup off, since most stuff is in SVN, git anyway...
+"Turn backup off
 set nobackup
 set nowb
 set noswapfile
 
-" Stop beeping at me bro
+"Stop beeping at me bro
 set noerrorbells 
 set vb 
 set t_vb="."
@@ -159,15 +160,15 @@ set secure "disable unsafe commands in local .vimrc files
 
 set autoindent "auto indent the next line
 
-" Tabs
+"Tabs
 if $WORK
   set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 else
   set tabstop=4 softtabstop=2 shiftwidth=4 expandtab
 endif
 
-" Line Wrapping
-set tw=500 "Max text width"
+"Line Wrapping
+set tw=500 "Max text width
 set ai     "Auto indent
 set si     "Smart indet
 set wrap   "Wrap lines
@@ -184,7 +185,6 @@ nnoremap <leader>d :VCSVimDiff <cr>            "Nice File Diff
 nnoremap <leader>c :VCSCommit <cr>             "Commit Changes
 nnoremap <leader>s :Gstatus <cr>               "GIT Status
 nnoremap <leader>da :bufdo silent! bdelete<cr> "Delete all buffers
-
 
 "Change Tab Spacing
 nnoremap <leader>2 <esc>:set expandtab tabstop=2 softtabstop=2 shiftwidth=2<cr>
@@ -206,20 +206,13 @@ nnoremap <leader>8 <esc>:set expandtab tabstop=8 softtabstop=8 shiftwidth=8<cr>
 """""""""""""""""""""""""""""""
 
 " => CSS
-" CSS (tab width 2 chr, wrap at 79th char)
 autocmd FileType css set sw=2
 autocmd FileType css set ts=2
 autocmd FileType css set sts=2
 autocmd FileType css set textwidth=79
-"""""""""""""""""""""""""""""""
-"                             "
-"         Leader Key          "
-"                             "  
-"""""""""""""""""""""""""""""""
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 
 " => HTML
-" HTML (tab width 2 chr, no wrapping)
 autocmd FileType html set sw=2
 autocmd FileType html set ts=2
 autocmd FileType html set sts=2
@@ -227,20 +220,20 @@ autocmd FileType html set textwidth=0
 autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 
 " => JavaScript
-au FileType javascript setl fen
-au FileType javascript setl nocindent
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType javascript autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
-
-" JavaScript (tab width 2 chr, wrap at 79th)
 autocmd FileType javascript set sw=2
 autocmd FileType javascript set ts=2
 autocmd FileType javascript set sts=2
 autocmd FileType javascript set textwidth=79
 
 " => Markdown
-au BufNewFile,BufRead *.md set filetype=markdown "set file types
+au BufNewFile,BufRead *.md set filetype=markdown
 autocmd FileType markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType markdown set sw=2
+autocmd FileType markdown set ts=2
+autocmd FileType markdown set sts=2
+autocmd FileType markdown set textwidth=79
 
 " => JSON
 au BufNewFile,BufRead *.json set filetype=json
@@ -281,13 +274,10 @@ let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_auto_completion_start_length=4
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
 
-" For cursor moving in insert mode(Not recommended)
+"For cursor moving in insert mode
 inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
 inoremap <expr><Right> neocomplcache#close_popup() . "\<Right>"
-inoremap <expr><Up>  neocomplcache#close_popup() . "\<Up>"
-inoremap <expr><Down> neocomplcache#close_popup() . "\<Down>"
 
 imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
  \ "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
