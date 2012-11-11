@@ -18,10 +18,15 @@ module.exports = function (grunt) {
       //Markdown task for notes
       notes: {
         files: ['Dropbox/Notes/*.md'],
+        template: 'Dropbox/HTMLNotes/assets/blog.html',
         dest: 'Dropbox/HTMLNotes',
         options: {
           gfm: true,
-          highlight: 'manual'
+          highlight: 'manual',
+          codeLines: {
+            before: '<span class="line">',
+            after: '</span>'
+          }
         }
       }
     },
