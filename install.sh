@@ -11,29 +11,19 @@ ln -s ~/environment/tmux/tmux.conf ~/.tmux.conf
 ln -s ~/environment/grunt/ ~/.grunt
 ln -s ~/environment/package.json ~/package.json
 
+#install npm packages
+(cd ~/ && npm install)
+
 #Setup Vundler
 echo 'Setting up VIM environment'
-cd ~/environment
-git submodule init
-git submodule update
+(cd ~/environment && git submodule init && git submodule update)
 
 #Tell VIM to install all the things and exit
 echo 'Installing VIM bundles'
 vim -c BundleInstall -c q -c q
 
-#wire up snippets
-dest="${HOME}/.vim/bundle/snipmate.vim/snippets/"
-
-for f in ~/environment/snippets/*
-do
-  snip=$(basename "$f")
-  rm $dest$snip
-  ln -s $f $dest$snip
-done
-
 echo 'Setting up OSX preferences'
-cd ~/environment/
-./osxSetup.sh
+(cd ~/environment/ && ./osxSetup.sh)
 
 #Setup oh-my-zsh
 echo 'Installing oh-my-zsh'
@@ -44,3 +34,5 @@ echo 'Switching default shell to zsh'
 chsh -s /bin/zsh
 
 echo 'Finished Please Reload Shell'
+echo 'Dont forget to add ~/node_modules/.bin to your path!'
+echo 'Dont forget to add ~/bin to your path!'
