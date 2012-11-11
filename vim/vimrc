@@ -179,12 +179,18 @@ set wrap   "Wrap lines
 "                             "  
 """""""""""""""""""""""""""""""
 
-nnoremap <leader>q :bw <cr>                    "close buffer
-nnoremap <leader>n :NERDTreeToggle<cr>         "toggle nerdtree
-nnoremap <leader>d :VCSVimDiff <cr>            "Nice File Diff
-nnoremap <leader>c :VCSCommit <cr>             "Commit Changes
-nnoremap <leader>s :Gstatus <cr>               "GIT Status
-nnoremap <leader>da :bufdo silent! bdelete<cr> "Delete all buffers
+"close buffer
+nnoremap <leader>q :bw <cr>                    
+"toggle nerdtree 
+nnoremap <leader>n :NERDTreeToggle<cr>        
+"Nice File Diff
+nnoremap <leader>d :VCSVimDiff <cr>           
+"Commit Changes
+nnoremap <leader>c :VCSCommit <cr>             
+"GIT Status
+nnoremap <leader>s :Gstatus <cr>              
+"Delete all buffers
+nnoremap <leader>da :bufdo silent! bdelete<cr> 
 
 "Change Tab Spacing
 nnoremap <leader>2 <esc>:set expandtab tabstop=2 softtabstop=2 shiftwidth=2<cr>
