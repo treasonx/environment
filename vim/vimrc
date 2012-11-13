@@ -42,6 +42,7 @@ call vundle#rc()               "vundler setup
 "Bundle 'Shougo/neocomplcache'             "Pretty Good Autocomplete          "
 "Bundle 'Shougo/neosnippet'                "Code snippets and expansion       "
 "Bundle 'JSON.vim'                         "JSON Code highlight               "     
+"Bundle 'lukaszb/vim-web-indent'           "Better js and html auto indent    "
 "                                                                             "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -62,6 +63,7 @@ Bundle 'jnwhiteh/vim-golang.git'
 Bundle 'Shougo/neocomplcache'                   
 Bundle 'Shougo/neosnippet' 
 Bundle 'JSON.vim'
+Bundle 'lukaszb/vim-web-indent'
 
 """""""""""""""""""""""""""""""
 "                             "
