@@ -11,6 +11,7 @@
     "grunt": "*",
     "grunt-markdown": "*",
     "http-server": "*",
-    "grunt-reload": "*"
+    "grunt-reload": "*",
+    "madge": "~0.1.1"
   }
 }
