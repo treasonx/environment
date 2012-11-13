@@ -312,8 +312,19 @@ let g:neocomplcache_snippets_dir=$HOME."/environment/snippets"
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_disable_auto_complete = 1
+let g:neocomplcache_enable_auto_select = 0
 
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
+imap <expr><Tab> neocomplcache#sources#snippets_complete#expandable() ? 
+            \ "\<Plug>(neocomplcache_snippets_expand)" 
+            \ : pumvisible() ? "\<C-n>" 
+            \ : <SID>check_back_space() ? "\<TAB>" 
+            \ : "\<C-x>\<C-u>" 
+inoremap <expr><C-n> neocomplcache#sources#snippets_complete#jumpable() ? 
+	\ "\<Plug>(neocomplcache_snippets_jump)" 
+	\ : "\<Tab>" 
+inoremap <expr><C-p> neocomplcache#sources#snippets_complete#expandable() ? 
+	\ "\<Plug>(neocomplcache_snippets_expand)" 
+	\ : pumvisible() ? "\<C-p>" : "\<Tab>" 
 
 " => wincent/Command-T
 let g:CommandTMatchWindowAtTop = 1
