@@ -70,6 +70,37 @@ Bundle 'lukaszb/vim-web-indent'
 "      Custom Functions       "
 "                             "    
 """""""""""""""""""""""""""""""
+function! CheckExpandable()
+  if neocomplcache#sources#snippets_complete#expandable()
+    call feedkeys("\<Plug>(neocomplcache_snippets_force_expand)")
+  endif
+
+  return ''
+endfunction
+
+function! SnippetOrCR()
+  if pumvisible()
+    call feedkeys("\<C-R>=CheckExpandable()\<CR>")
+    return neocomplcache#close_popup()
+  endif
+  return "\<CR>"
+endfunction
+
+function! SnippetOrTab()
+  if neocomplcache#sources#snippets_complete#expandable()
+    call feedkeys("\<Plug>(neocomplcache_snippets_jump)")
+    return ''
+  endif
+
+  return "\<TAB>"
+endfunction
+
+
+"check for backsapce. Used to cancel auto complete
+function! s:check_back_space()
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1] =~ '\s'
+endfunction
 
 "Clean trailing whitespace on save
 fun! <SID>StripTrailingWhitespaces()
@@ -280,15 +311,9 @@ let g:neocomplcache_snippets_dir=$HOME."/environment/snippets"
 " => Shougo/neocomplcache
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_auto_completion_start_length=4
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+let g:neocomplcache_disable_auto_complete = 1
 
-"For cursor moving in insert mode
-inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
-inoremap <expr><Right> neocomplcache#close_popup() . "\<Right>"
-
-imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
- \ "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
 
 " => wincent/Command-T
 let g:CommandTMatchWindowAtTop = 1
