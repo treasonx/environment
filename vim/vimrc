@@ -327,6 +327,7 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 imap <expr><Tab> neocomplcache#sources#snippets_complete#expandable() ? 
             \ "\<Plug>(neocomplcache_snippets_expand)" 
             \ : pumvisible() ? "\<C-n>" 
+			\ : <SID>check_back_space() ? "\<TAB>"
             \ : "\<C-x>\<C-u>\<C-p>\<lt>Down>" 
 
 
