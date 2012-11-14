@@ -142,6 +142,10 @@ set laststatus=2 "always have a status bar
 set showcmd      "show information about the current command
 syntax enable    "Enable syntax hl
 
+highlight Pmenu ctermbg=8 guibg=#606060
+highlight PmenuSel ctermbg=1 guifg=#dddd00 guibg=#1f82cd
+highlight PmenuSbar ctermbg=0 guibg=#d6d6d6
+
 """""""""""""""""""""""""""""""
 "                             "
 "          MISC VIM           "
@@ -312,19 +316,19 @@ let g:neocomplcache_snippets_dir=$HOME."/environment/snippets"
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_disable_auto_complete = 1
-let g:neocomplcache_enable_auto_select = 0
 
+"when completion open enter selects highlighted item. 
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+"Took me a little while to get autocomplete to how I like it. 
+"Is there a snippet? If so expand it. If not open 
+"the autocomplete menu but DO NOT auto complete with the first entry.
+"Only highlight the first selection
 imap <expr><Tab> neocomplcache#sources#snippets_complete#expandable() ? 
             \ "\<Plug>(neocomplcache_snippets_expand)" 
             \ : pumvisible() ? "\<C-n>" 
-            \ : <SID>check_back_space() ? "\<TAB>" 
-            \ : "\<C-x>\<C-u>" 
-inoremap <expr><C-n> neocomplcache#sources#snippets_complete#jumpable() ? 
-	\ "\<Plug>(neocomplcache_snippets_jump)" 
-	\ : "\<Tab>" 
-inoremap <expr><C-p> neocomplcache#sources#snippets_complete#expandable() ? 
-	\ "\<Plug>(neocomplcache_snippets_expand)" 
-	\ : pumvisible() ? "\<C-p>" : "\<Tab>" 
+            \ : "\<C-x>\<C-u>\<C-p>\<lt>Down>" 
+
 
 " => wincent/Command-T
 let g:CommandTMatchWindowAtTop = 1
