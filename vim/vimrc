@@ -70,37 +70,6 @@ Bundle 'lukaszb/vim-web-indent'
 "      Custom Functions       "
 "                             "    
 """""""""""""""""""""""""""""""
-function! CheckExpandable()
-  if neocomplcache#sources#snippets_complete#expandable()
-    call feedkeys("\<Plug>(neocomplcache_snippets_force_expand)")
-  endif
-
-  return ''
-endfunction
-
-function! SnippetOrCR()
-  if pumvisible()
-    call feedkeys("\<C-R>=CheckExpandable()\<CR>")
-    return neocomplcache#close_popup()
-  endif
-  return "\<CR>"
-endfunction
-
-function! SnippetOrTab()
-  if neocomplcache#sources#snippets_complete#expandable()
-    call feedkeys("\<Plug>(neocomplcache_snippets_jump)")
-    return ''
-  endif
-
-  return "\<TAB>"
-endfunction
-
-
-"check for backsapce. Used to cancel auto complete
-function! s:check_back_space()
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1] =~ '\s'
-endfunction
 
 "Clean trailing whitespace on save
 fun! <SID>StripTrailingWhitespaces()
@@ -263,6 +232,8 @@ autocmd FileType html set textwidth=0
 autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 
 " => JavaScript
+au FileType javascript setl fen
+au FileType javascript setl nocindent
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType javascript autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 autocmd FileType javascript set sw=2
@@ -313,23 +284,48 @@ endif
 let g:neocomplcache_snippets_dir=$HOME."/environment/snippets"
 
 " => Shougo/neocomplcache
+" Disable AutoComplPop. Comment out this line if AutoComplPop is not installed.
+let g:acp_enableAtStartup = 0
+" Launches neocomplcache automatically on vim startup.
 let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
 let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_disable_auto_complete = 1
+" Use camel case completion.
+let g:neocomplcache_enable_camel_case_completion = 1
+" Use underscore completion.
+let g:neocomplcache_enable_underbar_completion = 1
+" Sets minimum char length of syntax keyword.
+let g:neocomplcache_min_syntax_length = 3
+" buffer file name pattern that locks neocomplcache. e.g. ku.vim or fuzzyfinder 
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
-"when completion open enter selects highlighted item. 
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Define file-type dependent dictionaries.
+let g:neocomplcache_dictionary_filetype_lists = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+    \ }
 
-"Took me a little while to get autocomplete to how I like it. 
-"Is there a snippet? If so expand it. If not open 
-"the autocomplete menu but DO NOT auto complete with the first entry.
-"Only highlight the first selection
-imap <expr><Tab> neocomplcache#sources#snippets_complete#expandable() ? 
-            \ "\<Plug>(neocomplcache_snippets_expand)" 
-            \ : pumvisible() ? "\<C-n>" 
-			\ : <SID>check_back_space() ? "\<TAB>"
-            \ : "\<C-x>\<C-u>\<C-p>\<lt>Down>" 
+" Define keyword, for minor languages
+if !exists('g:neocomplcache_keyword_patterns')
+  let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 " => wincent/Command-T
 let g:CommandTMatchWindowAtTop = 1
