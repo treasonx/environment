@@ -296,7 +296,6 @@ let g:Powerline_symbols = 'unicode'
 let g:Powerline_stl_path_style = 'short'
 
 "=> Lokaltog/vim-easymotion.git
-let g:EasyMotion_leader_key = '<leader><leader>'
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
 
