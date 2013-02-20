@@ -1,6 +1,6 @@
 [user]
-  email = treasonx@gmail.com
-  name = James Morrin
+	email = treasonx@gmail.com
+	name = James Morrin
 
 [github]
   user = treasonx
@@ -37,13 +37,26 @@
   submodule = 1
 [push]
   # Only push branches that have been set up to track a remote branch.
-  default = current
+  default = tracking
 [difftool "Kaleidoscope"]
-	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
 	prompt = false
 [diff]
 	tool = Kaleidoscope
 [core]
 	quotepath = false
-	excludesfile = /Users/jmorrin/.gitignore
+	excludesfile = /Users/jmorrin/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[mergetool]
+	prompt = false
+[merge]
+	tool = Kaleidoscope
