@@ -62,7 +62,7 @@ Bundle 'nvie/vim-togglemouse'
 Bundle 'Raimondi/delimitMate'                   
 Bundle 'Lokaltog/vim-powerline.git'             
 Bundle 'jnwhiteh/vim-golang.git'                
-Bundle 'ervandew/supertab'
+"Bundle 'ervandew/supertab'
 Bundle 'msanders/snipmate.vim'
 Bundle 'JSON.vim'
 Bundle 'lukaszb/vim-web-indent'
@@ -70,6 +70,7 @@ Bundle 'tpope/vim-markdown'
 "Trials
 Bundle 'scrooloose/nerdcommenter.git'
 Bundle 'Lokaltog/vim-easymotion.git'
+Bundle 'Valloric/YouCompleteMe'
 
 """""""""""""""""""""""""""""""
 "                             "
@@ -109,7 +110,6 @@ set ruler          "Always show current position
 set cul            "highlight current line
 set hlsearch       "highlight search
 set cmdheight=2    "The commandbar height
-set number         "show line numbers
 set relativenumber "relative line numbers
 set nohidden       "dont unload my buffer
 set nolazyredraw   "Don't redraw while executing macros 
@@ -203,7 +203,7 @@ nnoremap <leader>q :bw <cr>
 "toggle nerdtree 
 nnoremap <leader>n :NERDTreeToggle<cr>        
 "Nice File Diff
-nnoremap <leader>d :VCSVimDiff <cr>           
+"nnoremap <leader>d :VCSVimDiff <cr>           
 "Commit Changes
 nnoremap <leader>c :VCSCommit <cr>             
 "GIT Status
@@ -282,7 +282,8 @@ let g:miniBufExplModSelTarget = 1
 
 " => msanders/snipmate.vim
 let g:snippets_dir=$HOME."/environment/snippets"
-let g:snips_trigger_key = '<C-tab>'
+ino <c-j> <c-r>=TriggerSnippet()<cr>
+snor <c-j> <esc>i<right><c-r>=TriggerSnippet()<cr>
 
 " => kien/ctrlp.vim
 let g:ctrlp_cmd = 'CtrlP'
