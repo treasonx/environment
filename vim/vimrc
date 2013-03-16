@@ -20,6 +20,7 @@ set nocompatible               "be iMproved
 filetype off                   "required!
 set rtp+=~/.vim/bundle/vundle/ "Where are the bundles located
 call vundle#rc()               "vundler setup
+set enc=utf-8
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                                                             "
@@ -70,7 +71,6 @@ Bundle 'tpope/vim-markdown'
 "Trials
 Bundle 'scrooloose/nerdcommenter.git'
 Bundle 'Lokaltog/vim-easymotion.git'
-Bundle 'Valloric/YouCompleteMe'
 
 """""""""""""""""""""""""""""""
 "                             "
@@ -293,7 +293,7 @@ let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
 
 " => Lokaltog/vim-powerline.git
-let g:Powerline_symbols = 'unicode'
+"let g:Powerline_symbols = 'unicode'
 let g:Powerline_stl_path_style = 'short'
 
 "=> Lokaltog/vim-easymotion.git
