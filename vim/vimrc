@@ -20,7 +20,7 @@ set nocompatible               "be iMproved
 filetype off                   "required!
 set rtp+=~/.vim/bundle/vundle/ "Where are the bundles located
 call vundle#rc()               "vundler setup
-set enc=utf-8
+set enc=utf-8                  "utf8 mode for chromebook
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                                                             "
@@ -44,7 +44,8 @@ set enc=utf-8
 "Bundle 'msanders/snipmate.vim'            "Snippet Expand                    " 
 "Bundle 'JSON.vim'                         "JSON Code highlight               "     
 "Bundle 'lukaszb/vim-web-indent'           "Better js and html auto indent    "
-"Bundle 'tpope/vim-markdown'               "Markdown highlighting             "
+"Bundle 'hallison/vim-markdown'            "Markdown highlighting             "
+"Bundle 'wikitopian/hardmode.git'          "Hardcore VIM mode                 "
 "                                                                             "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -63,11 +64,13 @@ Bundle 'nvie/vim-togglemouse'
 Bundle 'Raimondi/delimitMate'                   
 Bundle 'Lokaltog/vim-powerline.git'             
 Bundle 'jnwhiteh/vim-golang.git'                
-"Bundle 'ervandew/supertab'
 Bundle 'msanders/snipmate.vim'
 Bundle 'JSON.vim'
 Bundle 'lukaszb/vim-web-indent'
-Bundle 'tpope/vim-markdown'
+Bundle 'hallison/vim-markdown'
+Bundle 'wikitopian/hardmode.git'
+Bundle 'ap/vim-css-color'
+
 "Trials
 Bundle 'scrooloose/nerdcommenter.git'
 Bundle 'Lokaltog/vim-easymotion.git'
@@ -187,7 +190,6 @@ else
 endif
 
 "Line Wrapping
-set tw=500 "Max text width
 set ai     "Auto indent
 set si     "Smart indet
 set wrap   "Wrap lines
@@ -203,7 +205,7 @@ nnoremap <leader>q :bw <cr>
 "toggle nerdtree 
 nnoremap <leader>n :NERDTreeToggle<cr>        
 "Nice File Diff
-"nnoremap <leader>d :VCSVimDiff <cr>           
+nnoremap <leader>d :VCSVimDiff <cr>           
 "Commit Changes
 nnoremap <leader>c :VCSCommit <cr>             
 "GIT Status
@@ -212,6 +214,11 @@ nnoremap <leader>s :Gstatus <cr>
 nnoremap <leader>da :bufdo silent! bdelete<cr> 
 "CtrlP window
 nnoremap <leader>t :CtrlP<cr> 
+"Open last buffer
+nnoremap <C-e> :e#<CR>
+"Next Previous buffers
+nnoremap <C-n> :bnext<CR>
+nnoremap <C-p> :bprev<CR>
 
 "Change Tab Spacing
 nnoremap <leader>2 <esc>:set expandtab tabstop=2 softtabstop=2 shiftwidth=2<cr>
@@ -231,6 +238,10 @@ nnoremap <leader>8 <esc>:set expandtab tabstop=8 softtabstop=8 shiftwidth=8<cr>
 "          Language           "
 "                             "
 """""""""""""""""""""""""""""""
+
+" => Markdown
+autocmd FileType markdown set tw=80
+autocmd FileType markdown set spell
 
 " => CSS
 autocmd FileType css set sw=2
