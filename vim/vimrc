@@ -95,6 +95,20 @@ fun! PrettyJSON()
   set filetype=json
 endfun
 
+"clean html examples
+fun! SpxCleanHtml()
+  :%s/\sspx-src="[^"]*"/ /g
+  :%s/\sspx-style="[^"]*"/ /g
+  :%s/\shref="[^"]*"/ href="#"/g
+  :%s/\ssrc="[^"]*"/ /g
+  :%s/\son[a-zA-Z]*="[^"]*"/ /g
+  :g/^\s*$/d 
+  :set filetype=html
+  :filetype indent on
+  execute "normal \<gg=G>"
+endfun
+:command! SpxCleanHtml :call SpxCleanHtml()
+
 """""""""""""""""""""""""""""""
 "                             "
 "         Appearance          "
