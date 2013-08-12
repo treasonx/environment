@@ -74,6 +74,12 @@ Bundle 'ap/vim-css-color'
 "Trials
 Bundle 'scrooloose/nerdcommenter.git'
 Bundle 'Lokaltog/vim-easymotion.git'
+Bundle 'marijnh/tern_for_vim'
+"Bundle 'Shougo/unite.vim'
+"Bundle 'Shougo/vimfiler.vim'
+"Bundle 'Shougo/unite-outline'
+"Bundle 'Shougo/unite-help'
+"Bundle 'Shougo/unite-session'
 
 """""""""""""""""""""""""""""""
 "                             "
@@ -213,7 +219,6 @@ set wrap   "Wrap lines
 "         Leader Key          "
 "                             "  
 """""""""""""""""""""""""""""""
-
 "close buffer
 nnoremap <leader>q :bw <cr>                    
 "toggle nerdtree 
@@ -227,12 +232,14 @@ nnoremap <leader>s :Gstatus <cr>
 "Delete all buffers
 nnoremap <leader>da :bufdo silent! bdelete<cr> 
 "CtrlP window
-nnoremap <leader>t :CtrlP<cr> 
+nnoremap <leader>t :CtrlP<cr>
 "Open last buffer
 nnoremap <C-e> :e#<CR>
 "Next Previous buffers
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprev<CR>
+"Clear matches instead of searching for kdjlghsldkfgjhsfkjgh
+noremap <Leader><Space> :noh<CR>:call clearmatches()<CR>
 
 "Change Tab Spacing
 nnoremap <leader>2 <esc>:set expandtab tabstop=2 softtabstop=2 shiftwidth=2<cr>
