@@ -5,12 +5,6 @@
 [github]
   user = treasonx
 
-[difftool "Kaleidoscope"]
-[difftool]
-[diff]
-
-# Copy this file or single lines to ~/.gitconfig
-
 [alias]
   co = checkout
   # Log display from screencast, with train tracks.
@@ -38,12 +32,6 @@
 [push]
   # Only push branches that have been set up to track a remote branch.
   default = tracking
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[difftool]
-	prompt = false
-[diff]
-	tool = Kaleidoscope
 [core]
 	quotepath = false
 	excludesfile = /Users/jmorrin/.gitignore_global
@@ -53,6 +41,12 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[diff]
+	tool = Kaleidoscope
+[difftool]
+	prompt = false
 [mergetool "Kaleidoscope"]
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
