@@ -10,8 +10,9 @@ snippet log_r
 	console.log('%c=====================', "color:red;font-weight:bolder;background-color:black;padding:3px 13px");
 
 snippet define
-	define([${1:module}], function (${2:module}) {
-		${3:code}	
+	define(function (require) {
+		'use strict';
+		${1:string}	
 	});
 
 snippet extend 
