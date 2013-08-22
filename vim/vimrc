@@ -33,7 +33,7 @@ set enc=utf-8                  "utf8 mode for chromebook
 "Bundle 'scrooloose/syntastic'             "Static Analysis                   "
 "Bundle 'tsaleh/vim-matchit'               "Auto insert closing character     "
 "Bundle 'kien/ctrlp.vim'                   "Fuzzy File Finder                 "
-"Bundle 'altercation/vim-colors-solarized' "Color Scheme                      "
+"Bundle 'altercatiocvim-colors-solarized' "Color Scheme                      "
 "Bundle 'vim-scripts/vcscommand.vim'       "Source Control tools              "
 "Bundle 'tpope/vim-fugitive'               "GIT Specific tools                " 
 "Bundle 'nvie/vim-togglemouse'             "Yes I still use the mouse         "     
@@ -76,6 +76,8 @@ Bundle 'scrooloose/nerdcommenter.git'
 Bundle 'Lokaltog/vim-easymotion.git'
 Bundle 'marijnh/tern_for_vim'
 Bundle 'kshenoy/vim-signature'
+Bundle 'vim-scripts/VOoM'
+Bundle 'jgdavey/tslime.vim'
 "Bundle 'Shougo/unite.vim'
 "Bundle 'Shougo/vimfiler.vim'
 "Bundle 'Shougo/unite-outline'
@@ -95,6 +97,9 @@ fun! <SID>StripTrailingWhitespaces()
   %s/\s\+$//e
   call cursor(l, c)
 endfun
+
+":help (read this) editing effectively
+"jgdavey/tslime.vim
 
 "Format JSON
 fun! PrettyJSON()
