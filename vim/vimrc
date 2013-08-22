@@ -224,7 +224,9 @@ set wrap   "Wrap lines
 "                             "  
 """""""""""""""""""""""""""""""
 "close buffer
-nnoremap <leader>q :bw <cr>                    
+nnoremap <leader>] :bw <cr>                    
+"tern goto def
+nnoremap <leader>[ :TernDef <cr>
 "toggle nerdtree 
 nnoremap <leader>n :NERDTreeToggle<cr>        
 "Nice File Diff

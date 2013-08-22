@@ -10,6 +10,22 @@ snippet log_r
 	console.dir(${1:variable});
 	console.log('%c=====================', "color:red;font-weight:bolder;background-color:black;padding:3px 13px");
 
+	define(function (require) {
+		'use strict';
+		${1:string}	
+	});
+
+snippet extend 
+	define(['${1:module}'], function (${2:module}) {
+		
+        function ${3:constructor}() {
+            ${4:code}
+        }
+
+        return $2.extend({
+            constructor: $3    
+        });
+	});
 
 snippet define
 	define(function (require) {
