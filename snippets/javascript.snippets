@@ -4,12 +4,12 @@ snippet log
 	console.log('${1:string}');
 	console.log('%c=====================', "color:pink;font-weight:bolder;background-color:black;padding:3px 13px;margin:5px 0 0 0;");
 
+
 snippet log_r
 	console.log('%cJRM DEBUG ========= File `expand('%:p')` Line `line(".")`', "color:red;font-weight:bolder;background-color:black; padding:3px 13px");
 	console.dir(${1:variable});
 	console.log('%c=====================', "color:red;font-weight:bolder;background-color:black;padding:3px 13px");
 
-snippet define
 	define(function (require) {
 		'use strict';
 		${1:string}	
@@ -25,7 +25,11 @@ snippet extend
         return $2.extend({
             constructor: $3    
         });
+	});
 
+snippet define
+	define(function (require) {
+		${1:code}	
 	});
     
 snippet spec
@@ -55,25 +59,30 @@ snippet spec
 		}
 	});
 
+
 snippet it
 	it('${1:expectation}', function () {
 		${2:test}		
 	});
+
 
 snippet iife
 	(function () {
 		${1:code}	
 	}());
 
+
 snippet biife
 	(function (window, undefined) {
 		${1:code}		
 	} (this));
 
+
 snippet siife
 	(function (window, SPX, $, undefined) {
 		${1:code}		
 	} (this, this.SPX, this.$));
+
 
 
 

@@ -41,7 +41,7 @@ set enc=utf-8                  "utf8 mode for chromebook
 "Bundle 'Lokaltog/vim-powerline.git'       "Better Status Line                "
 "Bundle 'jnwhiteh/vim-golang.git'          "GO Lang support                   " 
 "Bundle 'ervandew/supertab'                "Tab Autocomplete                  " 
-"Bundle 'msanders/snipmate.vim'            "Snippet Expand                    " 
+"Bundle 'garbas/vim-snipmate'              "Snippet Expand                    " 
 "Bundle 'JSON.vim'                         "JSON Code highlight               "     
 "Bundle 'lukaszb/vim-web-indent'           "Better js and html auto indent    "
 "Bundle 'hallison/vim-markdown'            "Markdown highlighting             "
@@ -64,7 +64,9 @@ Bundle 'nvie/vim-togglemouse'
 Bundle 'Raimondi/delimitMate'                   
 Bundle 'Lokaltog/vim-powerline.git'             
 Bundle 'jnwhiteh/vim-golang.git'                
-Bundle 'msanders/snipmate.vim'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'garbas/vim-snipmate'
 Bundle 'JSON.vim'
 Bundle 'lukaszb/vim-web-indent'
 Bundle 'hallison/vim-markdown'
