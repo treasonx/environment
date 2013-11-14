@@ -76,10 +76,10 @@ Bundle 'ap/vim-css-color'
 "Trials
 Bundle 'scrooloose/nerdcommenter.git'
 Bundle 'Lokaltog/vim-easymotion.git'
-Bundle 'marijnh/tern_for_vim'
 Bundle 'kshenoy/vim-signature'
 Bundle 'vim-scripts/VOoM'
-Bundle 'zweifisch/pipe2eval'
+Bundle 'tpope/vim-commentary'
+Bundle 'tristen/vim-sparkup'
 "Bundle 'Shougo/unite.vim'
 "Bundle 'Shougo/vimfiler.vim'
 "Bundle 'Shougo/unite-outline'
@@ -142,6 +142,7 @@ set cul            "highlight current line
 set hlsearch       "highlight search
 set cmdheight=2    "The commandbar height
 set relativenumber "relative line numbers
+set number
 set nohidden       "dont unload my buffer
 set nolazyredraw   "Don't redraw while executing macros 
 set showmatch      "Show matching bracets when text indicator is over them
@@ -211,10 +212,10 @@ set secure "disable unsafe commands in local .vimrc files
 set autoindent "auto indent the next line
 
 "Tabs
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 if $WORK
-  set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-else
-  set tabstop=4 softtabstop=2 shiftwidth=4 expandtab
+  au BufRead,BufNewFile ~/projects/spx-web/* set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+  au BufRead,BufNewFile ~/projects/swoop-es/* set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 endif
 
 "Line Wrapping
@@ -243,6 +244,12 @@ nnoremap <leader>s :Gstatus <cr>
 nnoremap <leader>da :bufdo silent! bdelete<cr> 
 "CtrlP window
 nnoremap <leader>t :CtrlP<cr>
+if executable("ag")
+  set grepprg=ag\ --nogroup\ --nocolor
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_use_caching = 0
+endif
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/.tmp/*,*/.sass-cache/*,*/node_modules/*,*.keep,*.DS_Store,*/.git/*
 "Open last buffer
 nnoremap <C-e> :e#<CR>
 "Next Previous buffers
@@ -250,6 +257,9 @@ nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprev<CR>
 "Clear matches instead of searching for kdjlghsldkfgjhsfkjgh
 noremap <Leader><Space> :noh<CR>:call clearmatches()<CR>
+
+"sparkup
+let g:sparkupExecuteMapping = '<tab>'
 
 "Change Tab Spacing
 nnoremap <leader>2 <esc>:set expandtab tabstop=2 softtabstop=2 shiftwidth=2<cr>
@@ -342,5 +352,6 @@ let g:Powerline_stl_path_style = 'short'
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
 
-
+"=> Ruby
+autocmd FileType ruby,eruby set filetype=ruby.eruby.chef
 
