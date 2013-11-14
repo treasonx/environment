@@ -11,6 +11,7 @@
   l = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
   # Alternate log display from Scott Chacon
   lol = log --pretty=oneline --abbrev-commit --graph --decorate
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   # Other useful aliases:
   unstage = reset HEAD
   staged = diff --cached
