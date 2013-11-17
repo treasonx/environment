@@ -31,7 +31,7 @@ for f in config_list
   call SourceConfig(f)
 endfor
 
-for f in split(glob(vim_home+'plugin_settings/*.vim'), '\n')
+for f in split(glob(s:vim_home+'plugin_settings/*.vim'), '\n')
   exe 'source' f
 endfor
 
