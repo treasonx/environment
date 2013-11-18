@@ -29,6 +29,7 @@
 "Bundle 'tristen/vim-sparkup'              "Sparkup for vim HTML              "
 "Bundle 'Lokaltog/vim-easymotion.git'      "easier way to move around         "
 "Bundle 'scrooloose/nerdcommenter.git'     "easy commenting for code          "
+"Bundle 'rking/ag.vim'                     "grep files using silversearcher   "
 "                                                                             "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -60,3 +61,4 @@ Bundle 'tpope/vim-commentary'
 Bundle 'tristen/vim-sparkup'
 Bundle 'Lokaltog/vim-easymotion.git'
 Bundle 'scrooloose/nerdcommenter.git'
+Bundle 'rking/ag.vim'
