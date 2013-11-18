@@ -26,7 +26,7 @@ autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 au FileType javascript setl fen
 au FileType javascript setl nocindent
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType javascript autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+autocmd FileType javascript autocmd BufWritePre <buffer> :call StripTrailingWhitespaces()
 autocmd FileType javascript set sw=2
 autocmd FileType javascript set ts=2
 autocmd FileType javascript set sts=2
