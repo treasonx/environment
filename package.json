@@ -8,20 +8,8 @@
   },
   "dependencies": {
     "jshint": "*",
-    "grunt": "*",
-    "grunt-markdown": "*",
+    "grunt-cli": "*",
     "http-server": "*",
-    "grunt-reload": "*",
-    "madge": "~0.1.1",
-    "testacular": "~0.4.0",
-    "migrate": "~0.1.3",
-    "docpad": "~6.17.3",
-    "docpad-plugin-marked": "~2.1.0",
-    "docpad-plugin-stylus": "~2.2.0",
-    "docpad-plugin-highlightjs": "~2.1.1",
-    "docpad-plugin-handlebars": "~2.1.0",
-    "lodash": "~1.0.0-rc.2",
-    "uglify-js": "~2.2.2",
-    "karma": "~0.8.7"
+    "jsontool": "*"
   }
 }
