@@ -7,54 +7,8 @@ module.exports = function (grunt) {
   'use strict';
 
   grunt.initConfig({
-    reload: {
-      port: 35729, // LR default
-      liveReload: {},
-      proxy: {
-        host: 'localhost'
-      }
-    },
-    markdown: {
-      //Markdown task for notes
-      notes: {
-        files: ['Dropbox/Notes/*.md'],
-        template: 'Dropbox/HTMLNotes/assets/blog.html',
-        dest: 'Dropbox/HTMLNotes',
-        options: {
-          gfm: true,
-          highlight: 'manual',
-          codeLines: {
-            before: '<span class="line">',
-            after: '</span>'
-          }
-        }
-      }
-    },
-    server: {
-      //TODO server does not seem to be a multitask
-      notes: {
-        port: 8000,
-        base: '~/Dropbox/HTMLNotes'
-      }
-    },
-    watch: {
-      //Watch my notes and if they change reload
-      notes: {
-        files: ['Dropbox/Notes/*.md'],
-        tasks: 'markdown:notes reload'
-      }
-    }
   });
 
-  //Awesome markdown task with code highlight
-  grunt.loadNpmTasks('grunt-markdown');
-
-  //Live reload with chrome extension
-  grunt.loadNpmTasks('grunt-reload');
-
-  //Watch notes and reload preview
-  grunt.registerTask('previewNotes', 'When mardown notes change reload preview',
-    'markdown:notes server:notes watch:notes');
 
   grunt.registerTask('noop', 'do nothing', function() {
     console.log('NOPE!');
@@ -63,3 +17,4 @@ module.exports = function (grunt) {
   //Do nothing
   grunt.registerTask('default', 'noop');
 };
+
