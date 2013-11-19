@@ -42,8 +42,6 @@ set secure "disable unsafe commands in local .vimrc files
 "                             "
 """""""""""""""""""""""""""""""
 
-set autoindent "auto indent the next line
-
 "Tabs
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 if $WORK
@@ -53,5 +51,4 @@ endif
 
 "Line Wrapping
 set ai     "Auto indent
-set si     "Smart indet
 set wrap   "Wrap lines
