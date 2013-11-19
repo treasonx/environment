@@ -50,5 +50,4 @@ if $WORK
 endif
 
 "Line Wrapping
-set ai     "Auto indent
 set wrap   "Wrap lines
