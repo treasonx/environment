@@ -14,7 +14,7 @@ endfun
 
 "Format JSON
 function! PrettyJSON()
-  :%!python -m simplejson.tool
+  :%!json
   set filetype=json
 endfun
 :command! PrettyJSON :call PrettyJSON()

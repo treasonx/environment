@@ -43,11 +43,12 @@ set secure "disable unsafe commands in local .vimrc files
 """""""""""""""""""""""""""""""
 
 "Tabs
-set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-if $WORK
-  au BufRead,BufNewFile ~/projects/spx-web/* set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-  au BufRead,BufNewFile ~/projects/swoop-es/* set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-endif
+set noexpandtab
+set smarttab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set shiftround  
 
 "Line Wrapping
 set wrap   "Wrap lines

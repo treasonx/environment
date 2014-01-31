@@ -62,3 +62,8 @@ Bundle 'tristen/vim-sparkup'
 Bundle 'Lokaltog/vim-easymotion.git'
 Bundle 'scrooloose/nerdcommenter.git'
 Bundle 'rking/ag.vim'
+
+"trial
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
+Bundle 'leafgarland/typescript-vim'
