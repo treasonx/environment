@@ -7,6 +7,7 @@
 
 [alias]
   co = checkout
+  logp = log --pretty=format:"%h%x09%an%x09%ad%x09%s"
   # Log display from screencast, with train tracks.
   l = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
   # Alternate log display from Scott Chacon
@@ -36,6 +37,7 @@
 [core]
 	quotepath = false
 	excludesfile = /Users/jmorrin/.gitignore_global
+	editor = /usr/bin/vim
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -53,5 +55,6 @@
 	trustExitCode = true
 [mergetool]
 	prompt = false
+	keepBackup = true
 [merge]
 	tool = Kaleidoscope
