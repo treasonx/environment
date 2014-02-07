@@ -10,6 +10,8 @@
     "jshint": "*",
     "grunt-cli": "*",
     "http-server": "*",
-    "jsontool": "*"
+    "jsontool": "~7.0.1",
+    "bower": "~1.2.8",
+    "yo": "~1.1.0"
   }
 }
