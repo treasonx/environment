@@ -16,7 +16,6 @@
 "Bundle 'tpope/vim-fugitive'               "GIT Specific tools                " 
 "Bundle 'nvie/vim-togglemouse'             "Yes I still use the mouse         "     
 "Bundle 'Raimondi/delimitMate'             "Go to the closing character / tag "
-"Bundle 'Lokaltog/vim-powerline.git'       "Better Status Line                "
 "Bundle 'jnwhiteh/vim-golang.git'          "GO Lang support                   " 
 "Bundle 'garbas/vim-snipmate'              "Snippet Expand                    " 
 "Bundle 'JSON.vim'                         "JSON Code highlight               "     
@@ -30,6 +29,8 @@
 "Bundle 'Lokaltog/vim-easymotion.git'      "easier way to move around         "
 "Bundle 'scrooloose/nerdcommenter.git'     "easy commenting for code          "
 "Bundle 'rking/ag.vim'                     "grep files using silversearcher   "
+"Bundle 'christoomey/vim-tmux-navigator'   "navigate vim and tmux splits      "
+"Bundle 'itchyny/lightline.vim'            "Better status line                "
 "                                                                             "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -48,7 +49,6 @@ Bundle 'vim-scripts/vcscommand.vim'
 Bundle 'tpope/vim-fugitive'                     
 Bundle 'nvie/vim-togglemouse'                   
 Bundle 'Raimondi/delimitMate'                   
-Bundle 'Lokaltog/vim-powerline.git'             
 Bundle 'jnwhiteh/vim-golang.git'                
 Bundle 'garbas/vim-snipmate'
 Bundle 'JSON.vim'
@@ -62,8 +62,12 @@ Bundle 'tristen/vim-sparkup'
 Bundle 'Lokaltog/vim-easymotion.git'
 Bundle 'scrooloose/nerdcommenter.git'
 Bundle 'rking/ag.vim'
+Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'itchyny/lightline.vim'
 
 "trial
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'leafgarland/typescript-vim'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'junegunn/vim-easy-align'
