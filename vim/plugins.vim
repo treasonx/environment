@@ -31,6 +31,7 @@
 "Bundle 'rking/ag.vim'                     "grep files using silversearcher   "
 "Bundle 'christoomey/vim-tmux-navigator'   "navigate vim and tmux splits      "
 "Bundle 'itchyny/lightline.vim'            "Better status line                "
+"Bundle 'leafgarland/typescript-vim'       "Typescript highlight              "
 "                                                                             "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -64,10 +65,11 @@ Bundle 'scrooloose/nerdcommenter.git'
 Bundle 'rking/ag.vim'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'itchyny/lightline.vim'
+Bundle 'leafgarland/typescript-vim'
 
 "trial
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
-Bundle 'leafgarland/typescript-vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'junegunn/vim-easy-align'
+Bundle 'airblade/vim-gitgutter'
