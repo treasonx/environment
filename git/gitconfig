@@ -1,9 +1,10 @@
 [user]
-	email = treasonx@gmail.com
+	email = jmorrin@sitepen.com
 	name = James Morrin
 
 [github]
   user = treasonx
+  email = treasonx@gmail.com
 
 [alias]
   co = checkout
@@ -58,3 +59,5 @@
 	keepBackup = true
 [merge]
 	tool = Kaleidoscope
+[pull]
+	rebase = true

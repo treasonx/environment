@@ -33,3 +33,5 @@ highlight PmenuSbar ctermbg=0 guibg=#d6d6d6
 set noerrorbells 
 set vb 
 set t_vb="."
+
+au BufNewFile,BufRead *.ejs set filetype=html

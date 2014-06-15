@@ -32,6 +32,7 @@
 "Bundle 'christoomey/vim-tmux-navigator'   "navigate vim and tmux splits      "
 "Bundle 'itchyny/lightline.vim'            "Better status line                "
 "Bundle 'leafgarland/typescript-vim'       "Typescript highlight              "
+"Bundle 'mattn/emmet-vim'                  "HTML auto complete                "
 "                                                                             "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -66,10 +67,11 @@ Bundle 'rking/ag.vim'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'itchyny/lightline.vim'
 Bundle 'leafgarland/typescript-vim'
+Bundle 'mattn/emmet-vim'
 
 "trial
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/dash.vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'junegunn/vim-easy-align'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'jeetsukumaran/vim-mochalatte'
+Bundle 'nathanaelkane/vim-indent-guides'

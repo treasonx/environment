@@ -1,52 +1,73 @@
 {
-  "passfail"      : false,   // Stop on first error.
-  "maxerr"        : 100,     // Maximum errors before stopping.
-	"unused"        : true,    // use all the vars
-
-  "browser"       : true,    // Standard browser globals e.g. `window`, `document`.
-  "node"          : true,
-  "predef"        : ["define"],
-
-  "debug"         : true,    // Allow debugger statements e.g. browser breakpoints.
-  "devel"         : true,    // Allow development statements e.g. `console.log();`.
-
-  "es5"           : true,    // Allow EcmaScript 5 syntax.
-  "strict"        : true,    // Require `use strict` pragma in every file.
-  "asi"           : false,   // Tolerate Automatic Semicolon Insertion (no semicolons).
-  "laxbreak"      : false,   // Tolerate unsafe line breaks e.g. `return [\n] x` without semicolons.
-  "bitwise"       : false,   // Prohibit bitwise operators (&, |, ^, etc.).
-  "boss"          : false,   // Tolerate assignments inside if, for & while. Usually conditions & loops are for comparison, not assignments.
-  "curly"         : true,    // Require {} for every new block or scope.
-  "eqeqeq"        : true,    // Require triple equals i.e. `===`.
-  "eqnull"        : true,    // Tolerate use of `== null`.
-  "evil"          : false,   // Tolerate use of `eval`.
-  "expr"          : false,   // Tolerate `ExpressionStatement` as Programs.
-  "forin"         : false,   // Tolerate `for in` loops without `hasOwnPrototype`.
-  "immed"         : true,    // Require immediate invocations to be wrapped in parens e.g. `( function(){}() );`
-  "latedef"       : true,    // Prohibit variable use before definition.
-  "loopfunc"      : false,   // Allow functions to be defined within loops.
-  "noarg"         : true,    // Prohibit use of `arguments.caller` and `arguments.callee`.
-  "regexp"        : false,   // Prohibit `.` and `[^...]` in regular expressions.
-  "regexdash"     : false,   // Tolerate unescaped last dash i.e. `[-...]`.
-  "scripturl"     : true,    // Tolerate script-targeted URLs.
-  "shadow"        : false,   // Allows re-define variables later in code e.g. `var x=1; x=2;`.
-  "supernew"      : false,   // Tolerate `new function () { ... };` and `new Object;`.
-  "undef"         : true,    // Require all non-global variables be declared before they are used.
-
-
-  // Personal styling prefrences.
-  "newcap"        : true,    // Require capitalization of all constructor functions e.g. `new F()`.
-  "noempty"       : true,    // Prohibit use of empty blocks.
-  "nonew"         : true,    // Prohibit use of constructors for side-effects.
-  "nomen"         : false,   // Prohibit use of initial or trailing underbars in names.
-  "onevar"        : false,   // Allow only one `var` statement per function.
-  "plusplus"      : false,   // Prohibit use of `++` & `--`.
-  "sub"           : false,   // Tolerate all forms of subscript notation besides dot notation e.g. `dict['key']` instead of `dict.key`.
-  "trailing"      : true,    // Prohibit trailing whitespaces.
-  "camelcase"     : true,    // Camel Case Please
-  "quotmark"      : true,    // Single Quotes
-  "maxparams"     : 4,       // Gets nasty after 4
-  "maxdepth"      : 4,       // Please refactor to something a bit easier to follow
-  "maxcomplexity" : 10       // Keep it simple
+"asi": false,
+    "bitwise": false,
+    "boss": false,
+    "browser": true,
+    "camelcase": true,
+    "couch": false,
+    "curly": true,
+    "debug": false,
+    "devel": true,
+    "dojo": false,
+    "eqeqeq": true,
+    "eqnull": true,
+    "es3": true,
+    "esnext": false,
+    "evil": false,
+    "expr": true,
+    "forin": false,
+    "funcscope": true,
+    "gcl": false,
+    "globalstrict": false,
+    "immed": true,
+    "iterator": false,
+    "jquery": false,
+    "lastsemic": false,
+    "latedef": false,
+    "laxbreak": true,
+    "laxcomma": false,
+    "loopfunc": true,
+    "mootools": false,
+    "moz": false,
+    "multistr": false,
+    "newcap": true,
+    "noarg": true,
+    "node": false,
+    "noempty": false,
+    "nonew": true,
+    "nonstandard": false,
+    "nomen": false,
+    "onecase": false,
+    "onevar": false,
+    "passfail": false,
+    "phantom": false,
+    "plusplus": false,
+    "proto": false,
+    "prototypejs": false,
+    "regexdash": true,
+    "regexp": false,
+    "rhino": false,
+    "scripturl": true,
+    "shadow": false,
+    "shelljs": false,
+    "smarttabs": true,
+    "strict": false,
+    "sub": false,
+    "supernew": false,
+    "trailing": true,
+    "undef": true,
+    "unused": true,
+    "validthis": true,
+    "withstmt": false,
+    "white": true,
+    "worker": false,
+    "wsh": false,
+    "yui": false,
+    "maxlen": 120,
+    "indent": 4,
+    "maxerr": 250,
+    "predef": [ "require", "define" ],
+    "quotmark": "single",
+    "maxcomplexity": 10
 }
 

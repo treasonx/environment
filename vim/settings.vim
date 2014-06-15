@@ -52,3 +52,6 @@ set shiftround
 
 "Line Wrapping
 set wrap   "Wrap lines
+
+"Use system clipboard
+set clipboard=unnamed
