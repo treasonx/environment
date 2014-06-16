@@ -6,7 +6,6 @@
 "Bundle 'vim-scripts/L9'                   "VIMScript Programming Libraries   "
 "Bundle 'MarcWeber/vim-addon-mw-utils'     "VIMScript utils                   "
 "Bundle 'tomtom/tlib_vim'                  "VIMScript tlib utils              "
-"Bundle 'fholgado/minibufexpl.vim'         "List your buffers                 "
 "Bundle 'scrooloose/nerdtree'              "File Manager                      "
 "Bundle 'scrooloose/syntastic'             "Static Analysis                   "
 "Bundle 'tsaleh/vim-matchit'               "Auto insert closing character     "
@@ -41,7 +40,6 @@ Bundle 'gmarik/vundle'
 Bundle 'vim-scripts/L9'                         
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
-Bundle 'fholgado/minibufexpl.vim'               
 Bundle 'scrooloose/nerdtree'                     
 Bundle 'scrooloose/syntastic'                   
 Bundle 'tsaleh/vim-matchit'                     
@@ -65,7 +63,7 @@ Bundle 'Lokaltog/vim-easymotion.git'
 Bundle 'scrooloose/nerdcommenter.git'
 Bundle 'rking/ag.vim'
 Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'itchyny/lightline.vim'
+Bundle 'bling/vim-airline'
 Bundle 'leafgarland/typescript-vim'
 Bundle 'mattn/emmet-vim'
 
@@ -75,3 +73,4 @@ Bundle 'junegunn/vim-easy-align'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'jeetsukumaran/vim-mochalatte'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'edkolev/tmuxline.vim'
