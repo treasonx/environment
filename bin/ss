@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+java -jar ~/bin/selenium-server-standalone-2.39.0.jar

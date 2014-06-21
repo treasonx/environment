@@ -11,7 +11,6 @@
 "Bundle 'tsaleh/vim-matchit'               "Auto insert closing character     "
 "Bundle 'kien/ctrlp.vim'                   "Fuzzy File Finder                 "
 "Bundle 'altercatiocvim-colors-solarized'  "Color Scheme                      "
-"Bundle 'vim-scripts/vcscommand.vim'       "Source Control tools              "
 "Bundle 'tpope/vim-fugitive'               "GIT Specific tools                " 
 "Bundle 'nvie/vim-togglemouse'             "Yes I still use the mouse         "     
 "Bundle 'Raimondi/delimitMate'             "Go to the closing character / tag "
@@ -29,9 +28,15 @@
 "Bundle 'scrooloose/nerdcommenter.git'     "easy commenting for code          "
 "Bundle 'rking/ag.vim'                     "grep files using silversearcher   "
 "Bundle 'christoomey/vim-tmux-navigator'   "navigate vim and tmux splits      "
-"Bundle 'itchyny/lightline.vim'            "Better status line                "
-"Bundle 'leafgarland/typescript-vim'       "Typescript highlight              "
+"Bundle 'bling/vim-airline'                "Better status line                "
+"Bundle 'edkolev/tmuxline.vim'             "Keep tmux in sync with airline    "
+"Bundle 'airblade/vim-gitgutter'           "Git status in the gutter          "
 "Bundle 'mattn/emmet-vim'                  "HTML auto complete                "
+"Bundle 'nathanaelkane/vim-indent-guides'  "Visual indent guides              "
+"Bundle 'Valloric/YouCompleteMe'           "Nice autocomplete engine          "
+"Bundle 'marijnh/tern_for_vim'             "Contexual code complete for JS    "
+"Bundle 'SirVer/ultisnips'                 "Snippets                          "
+"Bundle 'honza/vim-snippets'               "Standard snippet library          "
 "                                                                             "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -45,12 +50,10 @@ Bundle 'scrooloose/syntastic'
 Bundle 'tsaleh/vim-matchit'                     
 Bundle 'kien/ctrlp.vim'                      
 Bundle 'altercation/vim-colors-solarized'       
-Bundle 'vim-scripts/vcscommand.vim'             
 Bundle 'tpope/vim-fugitive'                     
 Bundle 'nvie/vim-togglemouse'                   
 Bundle 'Raimondi/delimitMate'                   
 Bundle 'jnwhiteh/vim-golang.git'                
-Bundle 'garbas/vim-snipmate'
 Bundle 'JSON.vim'
 Bundle 'lukaszb/vim-web-indent'
 Bundle 'hallison/vim-markdown'
@@ -64,13 +67,15 @@ Bundle 'scrooloose/nerdcommenter.git'
 Bundle 'rking/ag.vim'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'bling/vim-airline'
-Bundle 'leafgarland/typescript-vim'
-Bundle 'mattn/emmet-vim'
+Bundle 'edkolev/tmuxline.vim'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'marijnh/tern_for_vim'
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
 
 "trial
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'junegunn/vim-easy-align'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'jeetsukumaran/vim-mochalatte'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'edkolev/tmuxline.vim'
+
