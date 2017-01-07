@@ -1,4 +1,5 @@
 .DS_Store
 vim/bundle
 nvim/plugged
+tmux/plugins
 
