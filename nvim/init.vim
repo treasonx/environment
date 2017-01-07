@@ -22,7 +22,6 @@ Plug 'scrooloose/nerdtree'              "File Manager                      "
 Plug 'scrooloose/syntastic'             "Static Analysis                   "
 Plug 'tmhedberg/matchit'                "Auto insert closing character     "
 Plug 'kien/ctrlp.vim'                   "Fuzzy File Finder                 "
-Plug 'altercation/vim-colors-solarized' "Color Scheme                      "
 Plug 'Raimondi/delimitMate'             "Go to the closing character / tag "
 Plug 'JSON.vim'                         "JSON Code highlight               "     
 Plug 'lukaszb/vim-web-indent'           "Better js and html auto indent    "
@@ -39,6 +38,10 @@ Plug 'edkolev/tmuxline.vim'             "Keep tmux in sync with airline    "
 Plug 'airblade/vim-gitgutter'           "Git status in the gutter          "
 Plug 'mattn/emmet-vim'                  "HTML auto complete                "
 Plug 'nathanaelkane/vim-indent-guides'  "Visual indent guides              "
+
+"Neovim doesn't support gui_running so solarized theme fails. Using fork for now"
+"Plug 'altercation/vim-colors-solarized' "Color Scheme                      "
+Plug 'frankier/neovim-colors-solarized-truecolor-only' "Solarized for nvim  " 
 call plug#end()
 
 """""""""""""""""""""""""""""""
@@ -69,16 +72,9 @@ endfun
 """""""""""""""""""""""""""""""
 
 "Color Scheme stuffs
-if has('gui_running')
-    set background=light
-else
-    set background=dark
-endif
-let g:solarized_termtrans=1
-let g:solarized_termcolors=256
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
-colorscheme solarized
+set termguicolors
+set background=dark
+colorscheme solarized"
 
 set ruler          "Always show current position
 set cul            "highlight current line
