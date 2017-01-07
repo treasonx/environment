@@ -1,5 +1,5 @@
 [user]
-	email = jmorrin@sitepen.com
+	email = treasonx@gmail.com
 	name = James Morrin
 
 [github]
@@ -9,18 +9,15 @@
 [alias]
   co = checkout
   logp = log --pretty=format:"%h%x09%an%x09%ad%x09%s"
-  # Log display from screencast, with train tracks.
-  l = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
-  # Alternate log display from Scott Chacon
-  lol = log --pretty=oneline --abbrev-commit --graph --decorate
-  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-  # Other useful aliases:
-  unstage = reset HEAD
-  staged = diff --cached
-  unstaged = diff
-  current-branch = !git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'
-  # Usage: git track origin/feature-123-login-form
-  track = checkout -t
+  # Checkout new branch
+  cob = checkout -b
+  up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+  # add all changes and untracked files
+  save = !git add -A && git commit -m 'SAVEPOINT'
+  # add only untracked files
+  wip = !git add -u && git commit -m "WIP" 
+  # undo last commit
+  undo = reset HEAD~1 --mixed
 [apply]
   whitespace = warn
 [color]
@@ -40,10 +37,10 @@
 	excludesfile = /Users/jmorrin/.gitignore_global
 	editor = /usr/bin/vim
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
@@ -61,3 +58,5 @@
 	tool = Kaleidoscope
 [pull]
 	rebase = true
+[credential]
+	helper = osxkeychain

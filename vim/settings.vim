@@ -43,12 +43,11 @@ set secure "disable unsafe commands in local .vimrc files
 """""""""""""""""""""""""""""""
 
 "Tabs
-set noexpandtab
-set smarttab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set shiftround  
+set softtabstop=2
+set shiftwidth=2
+" controls how the code is displayed
+set tabstop=2
+set expandtab
 
 "Line Wrapping
 set wrap   "Wrap lines

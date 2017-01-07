@@ -15,7 +15,6 @@
 "Bundle 'nvie/vim-togglemouse'             "Yes I still use the mouse         "     
 "Bundle 'Raimondi/delimitMate'             "Go to the closing character / tag "
 "Bundle 'jnwhiteh/vim-golang.git'          "GO Lang support                   " 
-"Bundle 'garbas/vim-snipmate'              "Snippet Expand                    " 
 "Bundle 'JSON.vim'                         "JSON Code highlight               "     
 "Bundle 'lukaszb/vim-web-indent'           "Better js and html auto indent    "
 "Bundle 'hallison/vim-markdown'            "Markdown highlighting             "
@@ -34,7 +33,6 @@
 "Bundle 'mattn/emmet-vim'                  "HTML auto complete                "
 "Bundle 'nathanaelkane/vim-indent-guides'  "Visual indent guides              "
 "Bundle 'Valloric/YouCompleteMe'           "Nice autocomplete engine          "
-"Bundle 'marijnh/tern_for_vim'             "Contexual code complete for JS    "
 "Bundle 'SirVer/ultisnips'                 "Snippets                          "
 "Bundle 'honza/vim-snippets'               "Standard snippet library          "
 "                                                                             "
@@ -47,13 +45,13 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'scrooloose/nerdtree'                     
 Bundle 'scrooloose/syntastic'                   
-Bundle 'tsaleh/vim-matchit'                     
+Bundle 'eshock/vim-matchit'                     
 Bundle 'kien/ctrlp.vim'                      
 Bundle 'altercation/vim-colors-solarized'       
 Bundle 'tpope/vim-fugitive'                     
 Bundle 'nvie/vim-togglemouse'                   
 Bundle 'Raimondi/delimitMate'                   
-Bundle 'jnwhiteh/vim-golang.git'                
+Bundle 'fatih/vim-go'                
 Bundle 'JSON.vim'
 Bundle 'lukaszb/vim-web-indent'
 Bundle 'hallison/vim-markdown'
@@ -70,12 +68,15 @@ Bundle 'bling/vim-airline'
 Bundle 'edkolev/tmuxline.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'marijnh/tern_for_vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 
 "trial
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'junegunn/vim-easy-align'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'rizzatti/dash.vim'
+Bundle 'wavded/vim-stylus'
+Bundle 'ekalinin/Dockerfile.vim'
 
