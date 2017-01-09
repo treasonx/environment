@@ -29,6 +29,7 @@ Plug 'hallison/vim-markdown'            "Markdown highlighting             "
 Plug 'vim-scripts/VOoM'                 "VIM outliner                      "
 Plug 'kshenoy/vim-signature'            "show line marks                   "
 Plug 'tpope/vim-commentary'             "comment and uncomment things      "
+Plug 'tpope/vim-surround'               "Change surrounding parens, quotes,"
 Plug 'easymotion/vim-easymotion'        "easier way to move around         "
 Plug 'rking/ag.vim'                     "grep files using silversearcher   "
 Plug 'christoomey/vim-tmux-navigator'   "navigate vim and tmux splits      "
@@ -321,7 +322,7 @@ let g:syntastic_typescript_checkers=["tslint"]
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=232
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=233
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=232   ctermbg=232
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=233   ctermbg=233
 
 
