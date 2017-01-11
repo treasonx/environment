@@ -39,6 +39,7 @@ Plug 'edkolev/tmuxline.vim'             "Keep tmux in sync with airline    "
 Plug 'airblade/vim-gitgutter'           "Git status in the gutter          "
 Plug 'mattn/emmet-vim'                  "HTML auto complete                "
 Plug 'nathanaelkane/vim-indent-guides'  "Visual indent guides              "
+Plug 'bhurlow/vim-parinfer'             "parinfer for clojure              "
 
 "Neovim doesn't support gui_running so solarized theme fails. Using fork for now"
 "Plug 'altercation/vim-colors-solarized' "Color Scheme                      "
