@@ -1,5 +1,7 @@
 local windowModifiers = {"ctrl", "alt", "shift"}
 
+hs.window.animationDuration = 0.05
+
 local function setFrame(onFrame)
   local win = hs.window.focusedWindow()
   local f = win:frame()
