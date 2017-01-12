@@ -1,4 +1,7 @@
 local windowModifiers = {"ctrl", "alt", "shift"}
+local anycomplete = require "anycomplete"
+anycomplete.registerDefaultBindings(windowModifiers, "g")
+
 
 hs.window.animationDuration = 0.05
 
@@ -17,7 +20,7 @@ end)
 
 
 -- Example opening webview.
-hs.hotkey.bind(windowModifiers, "g", function()
+hs.hotkey.bind(windowModifiers, "z", function()
   local win = hs.window.focusedWindow()
   local screen = win:screen()
   local max = screen:frame()
