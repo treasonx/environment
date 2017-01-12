@@ -12,7 +12,17 @@ local function setFrame(onFrame)
 end
 
 hs.hotkey.bind(windowModifiers, "l", function()
-  os.execute("/System/Library/CoreServices/Menu\\ Extras/User.menu/Contents/Resources/CGSession -suspend")
+  hs.caffeinate.startScreensaver()
+end)
+
+
+-- Example opening webview.
+hs.hotkey.bind(windowModifiers, "g", function()
+  local win = hs.window.focusedWindow()
+  local screen = win:screen()
+  local max = screen:frame()
+  hs.webview.new(max):url("https://www.google.com"):transparent(true):show()
+  hs.application.get("Hammerspoon"):activate()
 end)
 
 hs.hotkey.bind(windowModifiers, "Left", function()
