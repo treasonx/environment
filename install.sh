@@ -11,20 +11,15 @@ fi
 #Setup symbolic links
 echo 'Setting up symbolic links'
 ln -s ~/environment/bin ~/bin
-ln -s ~/environment/vim ~/.vim
-ln -s ~/environment/vim/vimrc ~/.vimrc
-ln -s ~/environment/jshint/jshintrc ~/.jshintrc
+ln -s ~/environment/nvim ~/.nvim
+ln -s ~/environment/hammerspoon ~/.hammerspoon
 ln -s ~/environment/git/gitconfig ~/.gitconfig
 ln -s ~/environment/tmux/tmux.conf ~/.tmux.conf
-ln -s ~/environment/grunt/ ~/.grunt
-ln -s ~/environment/package.json ~/package.json
+ln -s ~/environment/tmux/ ~/.tmux
 
 #install homebrew
 echo 'Installing home brew'
 ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
-
-#install npm packages
-(cd ~/ && npm install)
 
 #Setup Vundler
 echo 'Setting up VIM environment'
@@ -32,7 +27,7 @@ echo 'Setting up VIM environment'
 
 #Tell VIM to install all the things and exit
 echo 'Installing VIM bundles'
-vim -c BundleInstall -c q -c q
+nvim -c PlugInstall -c q -c q
 
 echo 'Setting up OSX preferences'
 (cd ~/environment/ && ./osxSetup.sh)
