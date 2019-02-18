@@ -7,6 +7,7 @@
 set nocompatible               "be iMproved
 filetype off                   "required!
 set enc=utf-8                  "utf8 mode for chromebook
+set hidden
 
 """""""""""""""""""""""""""""""
 "                             "   
@@ -21,9 +22,7 @@ Plug 'tomtom/tlib_vim'                  "VIMScript tlib utils              "
 Plug 'scrooloose/nerdtree'              "File Manager                      "
 Plug 'scrooloose/syntastic'             "Static Analysis                   "
 Plug 'tmhedberg/matchit'                "Auto insert closing character     "
-Plug 'kien/ctrlp.vim'                   "Fuzzy File Finder                 "
 Plug 'Raimondi/delimitMate'             "Go to the closing character / tag "
-Plug 'JSON.vim'                         "JSON Code highlight               "     
 Plug 'lukaszb/vim-web-indent'           "Better js and html auto indent    "
 Plug 'hallison/vim-markdown'            "Markdown highlighting             "
 Plug 'vim-scripts/VOoM'                 "VIM outliner                      "
@@ -31,19 +30,20 @@ Plug 'kshenoy/vim-signature'            "show line marks                   "
 Plug 'tpope/vim-commentary'             "comment and uncomment things      "
 Plug 'tpope/vim-surround'               "Change surrounding parens, quotes,"
 Plug 'easymotion/vim-easymotion'        "easier way to move around         "
-Plug 'rking/ag.vim'                     "grep files using silversearcher   "
 Plug 'christoomey/vim-tmux-navigator'   "navigate vim and tmux splits      "
 Plug 'vim-airline/vim-airline'          "Better status line                "
 Plug 'vim-airline/vim-airline-themes'   "Status line themes                "
 Plug 'edkolev/tmuxline.vim'             "Keep tmux in sync with airline    "
-Plug 'airblade/vim-gitgutter'           "Git status in the gutter          "
+Plug 'mhinz/vim-signify'                "VCS status in the gutter          "
 Plug 'mattn/emmet-vim'                  "HTML auto complete                "
-Plug 'nathanaelkane/vim-indent-guides'  "Visual indent guides              "
-Plug 'bhurlow/vim-parinfer'             "parinfer for clojure              "
-
-"Neovim doesn't support gui_running so solarized theme fails. Using fork for now"
-"Plug 'altercation/vim-colors-solarized' "Color Scheme                      "
-Plug 'frankier/neovim-colors-solarized-truecolor-only' "Solarized for nvim  " 
+Plug 'dansomething/vim-eclim'           "eclim                             "
+Plug 'ngemily/vim-vp4'                  "p4                                "
+Plug 'morhetz/gruvbox'                  "Theme                             " 
+Plug 'mileszs/ack.vim'                  "ack for vim                       " 
+Plug 'vim-ctrlspace/vim-ctrlspace'      "Fuzzy finder for buffers and tabs "
+Plug 'kien/ctrlp.vim'                   "Fuzzy finder for files            "
+Plug 'nathanaelkane/vim-indent-guides'  "Indent Guides                     "
+Plug 'vim-scripts/mru.vim'              "File MRU                          "
 call plug#end()
 
 """""""""""""""""""""""""""""""
@@ -60,13 +60,6 @@ function! StripTrailingWhitespaces()
   call cursor(l, c)
 endfun
 
-"Format JSON
-function! PrettyJSON()
-  :%!json
-  set filetype=json
-endfun
-:command! PrettyJSON :call PrettyJSON()
-
 """""""""""""""""""""""""""""""
 "                             "
 "         Appearance          "
@@ -74,9 +67,15 @@ endfun
 """""""""""""""""""""""""""""""
 
 "Color Scheme stuffs
-set termguicolors
-set background=dark
-colorscheme solarized"
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+end
+colorscheme gruvbox
+let g:gruvbox_contrast_dark = "hard"
+let g:gruvbox_improved_strings = 1
+let g:gruvbox_improved_warning = 1
 
 set ruler          "Always show current position
 set cul            "highlight current line
@@ -84,7 +83,6 @@ set hlsearch       "highlight search
 set cmdheight=2    "The commandbar height
 set relativenumber "relative line numbers
 set number
-set nohidden       "dont unload my buffer
 set nolazyredraw   "Don't redraw while executing macros 
 set showmatch      "Show matching bracets when text indicator is over them
 set laststatus=2   "always have a status bar
@@ -101,27 +99,27 @@ set vb
 set t_vb="."
 
 au BufNewFile,BufRead *.ejs set filetype=html
+au BufNewFile,BufRead *.cmp set filetype=html
+
+" enable indentation
+set breakindent
+
+" ident by an additional 2 characters on wrapped lines, when line >= 40 characters, put 'showbreak' at start of line
+set breakindentopt=shift:2,min:40,sbr
+
+" append '>>' to indent
+set showbreak=>>
 
 """""""""""""""""""""""""""""""
 "                             "
 "         Leader Key          "
 "                             "  
 """""""""""""""""""""""""""""""
-"close buffer
-nnoremap <leader>] :bw <cr>                    
 "toggle nerdtree 
 nnoremap <leader>n :NERDTreeToggle<cr>        
+nnoremap <leader>b :NERDTreeFind<cr>        
 "Nice File Diff
-nnoremap <leader>d :VCSVimDiff <cr>           
-"Commit Changes
-nnoremap <leader>c :VCSCommit <cr>             
-"GIT Status
-nnoremap <leader>s :Gstatus <cr>              
-"CtrlP window
-nnoremap <leader>t :CtrlP<cr>
-
-"Open last buffer
-nnoremap <C-e> :e#<CR>
+nnoremap <leader>d :SignifyDiff <cr>           
 "Next Previous buffers
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprev<CR>
@@ -146,6 +144,7 @@ set bs=2                                    "allow backspace
 set scrolloff=6                             "start scrolling 5 lines before edge of viewport
 set pastetoggle=<f10>                       "Better paste behavior
 autocmd! bufwritepost vimrc source ~/.vimrc "When vimrc is edited, reload it
+set guitablabel=\[%N\]\ %t\ %M 
 
 "Search Options
 set ignorecase "Ignore case when searching
@@ -165,7 +164,6 @@ set noswapfile
 
 "Enable mouse support in xterm 
 set mouse=a
-"set ttymouse=xterm2
 
 "Load Project specific .vimrc 
 set exrc   "enable per-directory .vimrc files
@@ -261,9 +259,13 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-" bind K to grep word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-nnoremap \ :Ag<SPACE>
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+
+" don't close vim when we're closing the last buffer
+cabbrev q <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'close' : 'q')<CR>
 
 
 """""""""""""""""""""""""""""""
@@ -273,8 +275,9 @@ nnoremap \ :Ag<SPACE>
 """""""""""""""""""""""""""""""
 
 " Airline theme settings
-let g:airline_powerline_fonts = 1
-let g:airline_theme="badwolf"
+let g:airline_powerline_fonts = 0
+let g:airline_theme="gruvbox"
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 "Show buffer list 
 let g:airline#extensions#tabline#enabled = 1
@@ -282,27 +285,20 @@ let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tabline#buffer_min_count = 2
-
-"Show whitespace errors
 let g:airline#extensions#whitespace#enabled = 1
 
 " Tmux 
 let g:airline#extensions#tmuxline#enabled = 1
 let g:airline#extensions#tmuxline#snapshot_file = "~/environment/tmux/statusline-colors.conf"
 
-
-" => kien/ctrlp.vim
-let g:ctrlp_cmd = 'CtrlP'
+" CTRL-SPACE config
+let g:CtrlSpaceDefaultMappingKey = "<C-space> "
 if executable("ag")
-  set grepprg=ag\ --nogroup\ --nocolor
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  let g:ctrlp_use_caching = 0
+    let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
 endif
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/.tmp/*,*/.sass-cache/*,*/node_modules/*,*.keep,*.DS_Store,*/.git/*
-
-"show window at top of screen
-let g:ctrlp_match_window_bottom = 0
-let g:ctrlp_match_window_reversed = 0
+let g:CtrlSpaceSearchTiming = 500
+let g:airline_exclude_preview = 1
+let g:CtrlSpaceIgnoredFiles = '\v(tmp|temp|target)[\/]'
 
 "=> Lokaltog/vim-easymotion.git
 hi link EasyMotionTarget ErrorMsg
@@ -315,15 +311,61 @@ let g:syntastic_warning_symbol="⚠"
 let g:syntastic_enable_balloons = 1
 let g:syntastic_enable_highlighting = 1 
 
-let g:syntastic_typescript_tsc_args="--module amd --target ES5 --noImplicitAny"
-let g:syntastic_typescript_tsc_post_args="--outDir /tmp/tsc"
-let g:syntastic_typescript_checkers=["tslint"]
-
 " vim-indent
-let g:indent_guides_auto_colors = 0
+let g:indent_guides_auto_colors = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=232   ctermbg=232
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=233   ctermbg=233
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_color_change_percent = 3
 
+" Work Settings
+let path = getcwd()
+if path =~ "blt"
+  au BufNewFile,BufRead *.cmp set filetype=html
+  au BufNewFile,BufRead *.app set filetype=html
+  au BufNewFile,BufRead *.auradoc set filetype=xml
+
+  " ** P4 commands ** 
+  " Auto Prompt to edit file on change
+  let g:vp4_prompt_on_write = 1
+  " Simplified Annotate
+  let g:vp4_annotate_simple = 1
+  " move changes to CL
+  cnoreabbrev p4m Vp4Reopen   
+  " edit current file
+  cnoreabbrev p4e Vp4Edit   
+  " revert changes for current buffer
+  cnoreabbrev p4r Vp4Revert   
+  " mark for delete and close current buffer
+  cnoreabbrev p4delete Vp4Delete
+  " annotate a visual selection of lines
+  cnoreabbrev p4a Vp4Annotate
+  " diff against repo version
+  cnoreabbrev p4diff Vp4Diff
+  " add current file
+  cnoreabbrev p4add Vp4Add
+  " open log of changes for file
+  cnoreabbrev p4log Vp4Filelog
+
+  "CtrlP window
+  nnoremap <leader>t :LocateFile<cr>
+
+  " ** Java Navigation Shortcuts ** 
+  " Jump to implementation 
+  nnoremap <leader>i :JavaSearch -p <C-R><C-W> -t all -x implementors -a edit<cr>
+  " Jump to declaration
+  " nnoremap <leader>d :JavaSearch -p <C-R><C-W> -t all -x declarations -a edit<cr>
+  " Show references
+  nnoremap <leader>r :JavaSearch -p <C-R><C-W> -t all -x references -a edit<cr>
+  " Find Element
+  nnoremap <leader>g :JavaSearchContext -a edit<cr>
+  " Import 
+  nnoremap <leader>a :JavaImport <cr>
+  " Show call hierarchy
+  nnoremap <leader>c :JavaCallHierarchy! <cr>
+  " Show Outline
+  nnoremap <leader>o :JavaOutline <cr>
+
+endif
 
