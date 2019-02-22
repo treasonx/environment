@@ -44,6 +44,7 @@ Plug 'vim-ctrlspace/vim-ctrlspace'      "Fuzzy finder for buffers and tabs "
 Plug 'kien/ctrlp.vim'                   "Fuzzy finder for files            "
 Plug 'nathanaelkane/vim-indent-guides'  "Indent Guides                     "
 Plug 'vim-scripts/mru.vim'              "File MRU                          "
+Plug 'ervandew/supertab'                "Autocomplete                      "
 call plug#end()
 
 """""""""""""""""""""""""""""""
@@ -318,6 +319,10 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_color_change_percent = 3
+
+" SuperTab
+let g:SuperTabDefaultCompletionType = 'context'
+
 
 " Work Settings
 let path = getcwd()
