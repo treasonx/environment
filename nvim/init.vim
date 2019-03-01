@@ -89,6 +89,7 @@ set showmatch      "Show matching bracets when text indicator is over them
 set laststatus=2   "always have a status bar
 set showcmd        "show information about the current command
 syntax enable      "Enable syntax hl
+set colorcolumn=80 "Mark the column 80
 
 highlight Pmenu ctermbg=8 guibg=#606060
 highlight PmenuSel ctermbg=1 guifg=#dddd00 guibg=#1f82cd
@@ -371,6 +372,9 @@ if path =~ "blt"
   nnoremap <leader>c :JavaCallHierarchy! <cr>
   " Show Outline
   nnoremap <leader>o :JavaOutline <cr>
+
+  "Set tabs
+  set expandtab tabstop=4 softtabstop=4 shiftwidth=4
 
 endif
 
